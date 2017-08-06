@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
-import '../stylesheets/App.css';
+import Radium from 'radium';
+
+const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
+      <div style={styles.landingContainer}>
+        <div style={styles.backgroundImage}></div>
       </div>
     );
   }
 }
 
-export default App;
+var styles = {
+  landingContainer: {
+    height: '100vh'
+  },
+  backgroundImage: {
+    backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    height: '100%'
+  }
+}
+
+export default Radium(App);
