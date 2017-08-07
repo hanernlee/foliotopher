@@ -7,6 +7,10 @@ class App extends Component {
   render() {
     return (
       <div style={styles.landingContainer}>
+        <div style={styles.headLine}>
+          <div style={styles.name}>Christopher Lee</div>
+          <div>Software Developer</div>
+        </div>
         <div style={styles.backgroundImage}></div>
       </div>
     );
@@ -23,6 +27,17 @@ var styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     height: '100%'
+  },
+  headLine: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'white',
+    textAlign: 'center'
+  },
+  name: {
+    fontSize: '40px'
   }
 }
 
