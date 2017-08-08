@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { toggleNavigation } from './actionTypes';
 
 class Hamburger extends Component {
   constructor(props) {
@@ -10,13 +14,21 @@ class Hamburger extends Component {
     }
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
     const clicked = this.state.clicked;
     if (clicked) {
-      this.setState({clicked: false});
+      this.setState({
+        clicked: false
+      }, this.sendToNavigation);
     } else {
-      this.setState({clicked:true});
+      this.setState({
+        clicked: true
+      }, this.sendToNavigation);
     }
+  }
+
+  sendToNavigation = () => {
+    this.props.toggleNavigation(this.state.clicked);
   }
 
   render() {
@@ -44,6 +56,12 @@ class Hamburger extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ toggleNavigation: toggleNavigation}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Radium(Hamburger));
 
 var styles = {
   base: {
@@ -104,5 +122,3 @@ var styles = {
     opacity: 0
   }
 }
-
-export default Radium(Hamburger);

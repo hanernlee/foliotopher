@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 
 import Hamburger from './hamburger/index';
+import Navigation from './navigation/index';
 import App from './home/index';
 import reducer from './rootReducer';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
       <BrowserRouter>
         <div>
           <Hamburger />
+          <Navigation />
           <Switch>
             <Route path="/" component={App} />
           </Switch>
