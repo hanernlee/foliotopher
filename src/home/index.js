@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import { connect } from 'react-redux';
 
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 
@@ -7,15 +8,23 @@ class App extends Component {
   render() {
     return (
       <div style={styles.landingContainer}>
-        <div style={styles.headLine}>
+        {!this.props.navigationState && <div style={styles.headLine}>
           <div style={styles.name}>Christopher Lee</div>
           <div>Software Developer</div>
-        </div>
+        </div>}
         <div style={styles.backgroundImage}></div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    navigationState: state.navigationState
+  };
+};
+
+export default connect(mapStateToProps)(Radium(App));
 
 var styles = {
   landingContainer: {
@@ -40,5 +49,3 @@ var styles = {
     fontSize: '40px'
   }
 }
-
-export default Radium(App);

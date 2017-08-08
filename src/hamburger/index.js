@@ -72,7 +72,8 @@ var styles = {
     position: 'fixed',
     right: '15px',
     top: '15px',
-    zIndex: '1',
+    zIndex: '2',
+    cursor: 'pointer',
 
     // Need to add empty :hover styles here to tell Radium to track this element's
     // state.
