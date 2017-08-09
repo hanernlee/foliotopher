@@ -15,16 +15,9 @@ class Hamburger extends Component {
   }
 
   handleClick = (e) => {
-    const clicked = this.state.clicked;
-    if (clicked) {
-      this.setState({
-        clicked: false
-      }, this.sendToNavigation);
-    } else {
-      this.setState({
-        clicked: true
-      }, this.sendToNavigation);
-    }
+    this.setState(prevState => ({
+       clicked: !prevState.clicked,
+    }), this.sendToNavigation);
   }
 
   sendToNavigation = () => {
