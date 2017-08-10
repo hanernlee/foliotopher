@@ -7,10 +7,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 
+import reducer from './rootReducer';
 import Hamburger from './hamburger/index';
 import Navigation from './navigation/index';
 import App from './home/index';
-import reducer from './rootReducer';
+import Work from './work/index';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Hamburger />
           <Navigation />
           <Switch>
+            <Route path="/work" component={Work} />
             <Route path="/" component={App} />
           </Switch>
         </div>

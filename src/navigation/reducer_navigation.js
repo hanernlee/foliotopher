@@ -1,7 +1,7 @@
 export default function() {
   return [
-    {label: 'Home' },
-    {label: 'Work'},
-    {label: 'Connect'}
+    {label: 'Home', url: '/'},
+    {label: 'Work', url: '/work'},
+    {label: 'Contact', url: '/contact'}
   ]
 }

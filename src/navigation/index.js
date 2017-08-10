@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 import { toggleNavigation } from '../hamburger/actionTypes';
 
@@ -24,15 +25,17 @@ class NavigationMenu extends Component {
 
   handleOutsideClick(e) {
     // Detect click outside the ref component
-    if (!this.node.contains(e.target)) {
+    // if (!this.node.contains(e.target)) {
       this.props.toggleNavigation(false);
-    }
+    // }
   }
 
   renderMenu() {
     return this.props.navigationLinks.map((link) => {
       return (
-        <div key={link.label}>{link.label}</div>
+        <div key={link.label}>
+          <Link to={link.url} style={styles.link}>{link.label}</Link>
+        </div>
       );
     });
   }
@@ -83,5 +86,9 @@ var styles = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     zIndex: '1'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white'
   }
 }
