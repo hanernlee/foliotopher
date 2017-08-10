@@ -15,9 +15,19 @@ class Hamburger extends Component {
   }
 
   handleClick = (e) => {
-    this.setState(prevState => ({
-       clicked: !prevState.clicked,
-    }), this.sendToNavigation);
+    if (!this.props.navigationState) {
+      this.setState({
+        clicked: true
+      }, this.sendToNavigation)
+    } else {
+      this.setState({
+        clicked: false
+      }, this.sendToNavigation)
+    }
+    //
+    // this.setState(prevState => ({
+    //    clicked: !prevState.clicked,
+    // }), this.sendToNavigation);
   }
 
   sendToNavigation = () => {
@@ -25,7 +35,7 @@ class Hamburger extends Component {
   }
 
   render() {
-    const clicked = this.state.clicked;
+    const clicked = this.props.navigationState;
     var closedStyles = '';
 
     if (clicked) {
@@ -50,11 +60,17 @@ class Hamburger extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    navigationState: state.navigationState
+  };
+};
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ toggleNavigation: toggleNavigation}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Radium(Hamburger));
+export default connect(mapStateToProps, mapDispatchToProps)(Radium(Hamburger));
 
 var styles = {
   base: {

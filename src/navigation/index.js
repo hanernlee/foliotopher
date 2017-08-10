@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
+import { bindActionCreators } from 'redux';
 
+import { toggleNavigation } from '../hamburger/actionTypes';
 
 class NavigationMenu extends Component {
-  componentWillMount() {
-    document.addEventListener('click', this.handleClick, false);
+  constructor() {
+    super();
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick, false);
+  handleClick() {
+    // attach/remove event handler
+    if (this.props.navigationState) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+  }
+
+  handleOutsideClick(e) {
+    // Detect click outside the ref component
+    if (!this.node.contains(e.target)) {
+      this.props.toggleNavigation(false);
+    }
   }
 
   renderMenu() {
@@ -24,8 +41,8 @@ class NavigationMenu extends Component {
     const navigationDisplay = this.props.navigationState ? styles.display : '';
 
     return (
-      <div style={[styles.navigationMenu, navigationDisplay]}>
-        <div style={styles.menuContainer}>
+      <div onClick={this.handleClick()} style={[styles.navigationMenu, navigationDisplay]}>
+        <div ref={node => { this.node = node; }} style={styles.menuContainer}>
           {this.renderMenu()}
         </div>
       </div>
@@ -40,7 +57,11 @@ function mapStateToProps(state) {
   };
 };
 
-export default connect(mapStateToProps)(Radium(NavigationMenu));
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ toggleNavigation: toggleNavigation}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Radium(NavigationMenu));
 
 var styles = {
   navigationMenu: {
@@ -49,19 +70,18 @@ var styles = {
     width: '100vw',
     backgroundColor: 'rgba(0,0,0,0.8)',
     zIndex: '1',
-    pointerEvents: 'none',
     opacity: '0',
     transition: '0.3s ease all'
   },
   display: {
     opacity: '1',
-    pointerEvents: 'default'
   },
   menuContainer: {
     color: 'white',
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    zIndex: '1'
   }
 }

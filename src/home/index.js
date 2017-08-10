@@ -30,14 +30,14 @@ export default connect(mapStateToProps)(Radium(App));
 
 var styles = {
   landingContainer: {
-    height: '100vh'
+    height: '100vh',
   },
   backgroundImage: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
-    height: '100%'
+    height: '100%',
   },
   headLine: {
     position: 'absolute',
