@@ -69,15 +69,24 @@ export default connect(mapStateToProps, mapDispatchToProps)(Radium(NavigationMen
 var styles = {
   navigationMenu: {
     position: 'fixed',
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: 'rgba(0,0,0,0.8)',
+    bottom: '0px',
+    top: '0px',
+    left: '100%',
+    width: '300px',
+    backgroundColor: '#0C0C0C',
     zIndex: '1',
-    opacity: '0',
-    transition: '0.3s ease all'
+    transition: '0.4s ease-in-out',
+
+    '@media (min-width: 720px)': {
+      width: '400px'
+    }
   },
   display: {
-    opacity: '1',
+    transform: 'translate3d(-300px, 0px, 0px)',
+
+    '@media (min-width: 720px)': {
+      transform: 'translate3d(-400px, 0px, 0px)'
+    }
   },
   menuContainer: {
     color: 'white',
