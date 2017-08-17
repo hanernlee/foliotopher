@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fadeIn } from 'react-animations';
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import { Link as ReactRouterLink } from 'react-router-dom';
@@ -33,9 +34,11 @@ class NavigationMenu extends Component {
   }
 
   renderMenu() {
+    const linkContainerDisplay = this.props.navigationState ? styles.linkContainerDisplay : '';
+
     return this.props.navigationLinks.map((link) => {
       return (
-        <div style={styles.linkContainer} key={link.label}>
+        <div style={[styles.linkContainer, linkContainerDisplay]} key={link.label}>
           <Link to={link.url} style={styles.link}>{link.label}</Link>
         </div>
       );
@@ -110,6 +113,10 @@ var styles = {
     }
   },
   linkContainer: {
-    margin: '20px auto'
+    margin: '20px auto',
+  },
+  linkContainerDisplay: {
+    animation: '2.4s',
+    animationName: Radium.keyframes(fadeIn, 'fadeIn')
   }
 }
