@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 import { toggleNavigation } from '../hamburger/actionTypes';
+
+const Link = Radium(ReactRouterLink);
 
 class NavigationMenu extends Component {
   constructor() {
@@ -33,7 +35,7 @@ class NavigationMenu extends Component {
   renderMenu() {
     return this.props.navigationLinks.map((link) => {
       return (
-        <div key={link.label}>
+        <div style={styles.linkContainer} key={link.label}>
           <Link to={link.url} style={styles.link}>{link.label}</Link>
         </div>
       );
@@ -75,7 +77,7 @@ var styles = {
     width: '300px',
     backgroundColor: '#0C0C0C',
     zIndex: '1',
-    transition: '0.4s ease-in-out',
+    transition: '0.6s ease-in-out',
 
     '@media (min-width: 720px)': {
       width: '400px'
@@ -91,13 +93,23 @@ var styles = {
   menuContainer: {
     color: 'white',
     position: 'absolute',
-    top: '50%',
+    top: '40%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: '1'
+    zIndex: '1',
+    textAlign: 'center'
   },
   link: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'rgb(184, 184, 184)',
+    fontSize: '28px',
+    transition: '0.3s ease all',
+
+    ':hover': {
+      color: 'white'
+    }
+  },
+  linkContainer: {
+    margin: '20px auto'
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fadeIn } from 'react-animations';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 
@@ -36,7 +37,9 @@ var styles = {
     height: '100vh',
     left: '0px',
     position: 'relative',
-    transition: 'left 0.4s ease-in-out',
+    transition: 'left 0.6s ease-in-out',
+    animation: '2.4s',
+    animationName: Radium.keyframes(fadeIn, 'fadeIn')
   },
   backgroundImage: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
@@ -64,7 +67,7 @@ var styles = {
   slidein: {
     left: '-200px',
     position: 'relative',
-    transition: 'left 1.0s cubic-bezier(0.43, 0.17, 0.28, 0.99)',
+    transition: 'left 1.2s cubic-bezier(0.43, 0.17, 0.28, 0.99)',
 
     '@media (min-width: 720px)': {
       minHeight: 'calc(100vh - 80px)',
@@ -73,5 +76,5 @@ var styles = {
   },
   darken: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(' + imageURL + ')',
-  }
+  },
 }
