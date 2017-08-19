@@ -5,7 +5,7 @@ import './stylesheets/index.css';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import promise from 'redux-promise';
+import thunk from 'redux-thunk';
 
 import reducer from './rootReducer';
 import Hamburger from './hamburger/index';
@@ -13,7 +13,7 @@ import Navigation from './navigation/index';
 import App from './home/index';
 import Work from './work/index';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducer)}>

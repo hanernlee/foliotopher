@@ -5,7 +5,7 @@ import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
-import { toggleNavigation } from '../hamburger/actionTypes';
+import { toggleNavigation } from '../hamburger/actions';
 
 const Link = Radium(ReactRouterLink);
 
@@ -113,7 +113,7 @@ var styles = {
     }
   },
   linkContainer: {
-    margin: '20px auto',
+    margin: '35px auto',
   },
   linkContainerDisplay: {
     animation: '2.4s',

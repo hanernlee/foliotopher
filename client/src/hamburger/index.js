@@ -3,7 +3,7 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { toggleNavigation } from './actionTypes';
+import { toggleNavigation } from './actions';
 
 class Hamburger extends Component {
   constructor(props) {
@@ -24,10 +24,6 @@ class Hamburger extends Component {
         clicked: false
       }, this.sendToNavigation)
     }
-    //
-    // this.setState(prevState => ({
-    //    clicked: !prevState.clicked,
-    // }), this.sendToNavigation);
   }
 
   sendToNavigation = () => {

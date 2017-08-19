@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 
+import { fetchWorks } from '../firebase/actions';
+
 class Work extends Component {
+  componentDidMount() {
+    this.props.fetchWorks();
+  }
+
   render() {
+    console.log(this.props.worksList);
     const slidingIn = this.props.navigationState ? styles.slidein : '';
 
     return (
@@ -16,11 +23,12 @@ class Work extends Component {
 
 function mapStateToProps(state) {
   return {
-    navigationState: state.navigationState
+    navigationState: state.navigationState,
+    worksList: state.worksList
   };
 };
 
-export default connect(mapStateToProps)(Radium(Work));
+export default connect(mapStateToProps, { fetchWorks })(Radium(Work));
 
 var styles = {
   landingContainer: {
