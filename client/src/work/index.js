@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
+import { fadeIn } from 'react-animations';
+
 
 import { fetchWorks } from '../firebase/actions';
 
@@ -9,13 +11,30 @@ class Work extends Component {
     this.props.fetchWorks();
   }
 
+  navigate = () => {
+
+  }
+
+  renderWork() {
+    if (this.props.worksList) {
+      return this.props.worksList.map((work) => {
+        return (
+          <div key={work.key} style={styles.worksImage}>{work.id}</div>
+        );
+      });
+    }
+  }
+
   render() {
-    console.log(this.props.worksList);
     const slidingIn = this.props.navigationState ? styles.slidein : '';
 
     return (
       <div style={[styles.landingContainer, slidingIn]}>
-        <div>Work Section</div>
+        <div style={styles.workGallery}>
+          {this.renderWork()}
+        </div>
+        <div onClick={this.navigate} style={styles.navigation}>Next</div>
+        <div onClick={this.navigate} style={styles.navigation}>Back</div>
       </div>
     );
   }
@@ -29,6 +48,17 @@ function mapStateToProps(state) {
 };
 
 export default connect(mapStateToProps, { fetchWorks })(Radium(Work));
+
+var fadingIn = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateX(-15px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateX(0)'
+  }
+});
 
 var styles = {
   landingContainer: {
@@ -46,5 +76,23 @@ var styles = {
       minHeight: 'calc(100vh - 80px)',
       left: '-300px',
     }
+  },
+  workGallery: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
+    backgroundColor: 'red',
+    width: '720px',
+    height: '420px'
+  },
+  navigation: {
+    color: 'white'
+  },
+  worksImage: {
+    opacity: '0',
+    animation: 'ease 2.4s forwards',
+    animationName: fadingIn,
   }
 }
