@@ -3,6 +3,7 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 
 import { fetchWorks } from '../firebase/actions';
+import Dots from './dots/index';
 
 class Work extends Component {
   constructor(props) {
@@ -15,6 +16,12 @@ class Work extends Component {
 
   componentDidMount() {
     this.props.fetchWorks();
+  }
+
+  dotClick = (dotIndex) => {
+    this.setState({
+      count: dotIndex
+    });
   }
 
   navigateNext = () => {
@@ -55,6 +62,7 @@ class Work extends Component {
             <div key={work.key} style={styles.worksImage}>{work.id}</div>
           );
         }
+        return false;
       });
     }
   }
@@ -62,11 +70,20 @@ class Work extends Component {
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
 
+    if (!this.props.worksList) {
+      return (<div></div>);
+    }
+
     return (
       <div style={[styles.landingContainer, slidingIn]}>
         <div style={styles.workGallery}>
           {this.renderWork()}
         </div>
+        <Dots
+          dotsCount={this.props.worksList.length}
+          currentCount={this.state.count}
+          dotClick={this.dotClick}
+        />
         <div onClick={this.navigateNext} style={styles.navigation}>Next</div>
         <div onClick={this.navigateBack} style={styles.navigation}>Back</div>
       </div>
