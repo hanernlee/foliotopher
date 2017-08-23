@@ -10,7 +10,8 @@ class Work extends Component {
     super(props);
 
     this.state = {
-      count: 0
+      count: 0,
+      workEntries: []
     }
   }
 
@@ -54,12 +55,18 @@ class Work extends Component {
     }
   }
 
+  onLoad(work) {
+    this.setState(({ workEntries }) => {
+      return { workEntries: workEntries.concat(work) }
+    });
+  }
+
   renderWork() {
     if (this.props.worksList) {
-      return this.props.worksList.map((work, index) => {
+      return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
           return (
-            <div key={work.key} style={styles.worksImage}>{work.id}</div>
+            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
           );
         }
         return false;
@@ -76,6 +83,11 @@ class Work extends Component {
 
     return (
       <div style={[styles.landingContainer, slidingIn]}>
+        <div style={styles.hiddenHackContainer}>
+          {this.props.worksList.map((work, index) =>
+            <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />
+          )}
+        </div>
         <div style={styles.workGallery}>
           {this.renderWork()}
         </div>
@@ -142,8 +154,17 @@ var styles = {
     color: 'white'
   },
   worksImage: {
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: 'center center',
     opacity: '0',
     animation: 'ease 2.4s forwards',
     animationName: fadingIn,
+    height: '100%',
+    width: '100%'
+  },
+  hiddenHackContainer: {
+    display: 'none',
+    pointerEvents: 'none'
   }
 }
