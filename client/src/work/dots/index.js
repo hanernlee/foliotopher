@@ -17,7 +17,9 @@ class Dots extends Component {
 
   render() {
     return (
-      <div>{this.renderDots()}</div>
+      <div style={styles.dotContainer}>
+        {this.renderDots()}
+      </div>
     );
   }
 }
@@ -25,10 +27,19 @@ class Dots extends Component {
 export default Radium(Dots);
 
 var styles = {
+  dotContainer: {
+    position: 'absolute',
+    right: '0',
+    bottom: '-30px'
+  },
   dot: {
     color: 'white',
+    display: 'inline-block',
+    margin: '0 10px'
   },
   selectedDot: {
-    color: 'red'
+    color: 'red',
+    display: 'inline-block',
+    margin: '0 10px'
   }
 }

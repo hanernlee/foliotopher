@@ -88,16 +88,32 @@ class Work extends Component {
             <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />
           )}
         </div>
-        <div style={styles.workGallery}>
+        <div key="gallery" style={styles.workGallery}>
+          <div onClick={this.navigateNext} style={styles.navigationNext}>
+            {Radium.getState(this.state, 'gallery', ':hover') ? (
+              <div style={styles.arrowContainerNext}>
+                <div style={styles.arrowUpNext}></div>
+                <div style={styles.arrowDownNext}></div>
+              </div>
+            ) :
+            <div></div>}
+          </div>
+          <div onClick={this.navigateBack} style={styles.navigationBack}>
+            {Radium.getState(this.state, 'gallery', ':hover') ? (
+              <div style={styles.arrowContainerBack}>
+                <div style={styles.arrowUpBack}></div>
+                <div style={styles.arrowDownBack}></div>
+              </div>
+            ) :
+            <div></div>}
+          </div>
+          <Dots
+            dotsCount={this.props.worksList.length}
+            currentCount={this.state.count}
+            dotClick={this.dotClick}
+          />
           {this.renderWork()}
         </div>
-        <Dots
-          dotsCount={this.props.worksList.length}
-          currentCount={this.state.count}
-          dotClick={this.dotClick}
-        />
-        <div onClick={this.navigateNext} style={styles.navigation}>Next</div>
-        <div onClick={this.navigateBack} style={styles.navigation}>Back</div>
       </div>
     );
   }
@@ -120,6 +136,50 @@ var fadingIn = Radium.keyframes({
   'to': {
     opacity: '1',
     transform: 'translateX(0)'
+  }
+});
+
+var growNextUp = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(-6px) rotate(45deg) scaleX(0)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(-6px) rotate(45deg) scaleX(1)'
+  }
+});
+
+var growNextDown = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(6px) rotate(-45deg) scaleX(0)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(6px) rotate(-45deg) scaleX(1)'
+  }
+});
+
+var growBackUp = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(-6px) rotate(-45deg) scaleX(0)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(-6px) rotate(-45deg) scaleX(1)'
+  }
+});
+
+var growBackDown = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(6px) rotate(45deg) scaleX(0)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(6px) rotate(45deg) scaleX(1)'
   }
 });
 
@@ -148,10 +208,72 @@ var styles = {
     textAlign: 'center',
     backgroundColor: 'red',
     width: '720px',
-    height: '420px'
+    height: '420px',
+
+    // Need to add empty :hover styles here to tell Radium to track this element's
+    // state.
+    ':hover': {},
   },
-  navigation: {
-    color: 'white'
+  navigationNext: {
+    position: 'absolute',
+    right: '0',
+    zIndex: '1',
+    height: '100%'
+  },
+  arrowContainerNext: {
+    position: 'absolute',
+    top: 'calc(50% - 20px)',
+    left: '-61px',
+    zIndex: '1',
+    padding: '20px',
+  },
+  arrowContainerBack: {
+    position: 'absolute',
+    top: 'calc(50% - 20px)',
+    zIndex: '1',
+    padding: '20px'
+  },
+  arrowUpNext: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(-6px) rotate(45deg)',
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: growNextUp,
+  },
+  arrowDownNext: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(6px) rotate(-45deg)',
+    opacity: '0',
+    animation: 'ease 2.4s forwards',
+    animationName: growNextDown,
+  },
+  navigationBack: {
+    position: 'absolute',
+    left: '0',
+    zIndex: '1',
+    height: '100%'
+  },
+  arrowUpBack: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(-6px) rotate(-45deg)',
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: growBackUp,
+  },
+  arrowDownBack: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(6px) rotate(45deg)',
+    opacity: '0',
+    animation: 'ease 2.4s forwards',
+    animationName: growBackDown,
   },
   worksImage: {
     backgroundRepeat: 'no-repeat',
