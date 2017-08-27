@@ -66,7 +66,9 @@ class Work extends Component {
       return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
           return (
-            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
+            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}>
+              <span style={styles.worksTitle}>{work.title}</span>
+            </div>
           );
         }
         return false;
@@ -76,6 +78,7 @@ class Work extends Component {
 
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
+    const galleryImageLoaded = this.state.workEntries.length ? true : false;
 
     if (!this.props.worksList) {
       return (<div></div>);
@@ -89,23 +92,21 @@ class Work extends Component {
           )}
         </div>
         <div key="gallery" style={styles.workGallery}>
+          {galleryImageLoaded && <div style={styles.workGalleryHeader}>
+            <div style={styles.workGalleryHeaderLine}></div>
+            <div style={styles.workGalleryHeaderTitle}>Work</div>
+          </div>}
           <div onClick={this.navigateNext} style={styles.navigationNext}>
-            {Radium.getState(this.state, 'gallery', ':hover') ? (
-              <div style={styles.arrowContainerNext}>
-                <div style={styles.arrowUpNext}></div>
-                <div style={styles.arrowDownNext}></div>
-              </div>
-            ) :
-            <div></div>}
+            <div style={styles.arrowContainerNext}>
+              <div style={[styles.arrowUpNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpNext : '']}></div>
+              <div style={[styles.arrowDownNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownNext : '']}></div>
+            </div>
           </div>
           <div onClick={this.navigateBack} style={styles.navigationBack}>
-            {Radium.getState(this.state, 'gallery', ':hover') ? (
-              <div style={styles.arrowContainerBack}>
-                <div style={styles.arrowUpBack}></div>
-                <div style={styles.arrowDownBack}></div>
-              </div>
-            ) :
-            <div></div>}
+            <div style={styles.arrowContainerBack}>
+              <div style={[styles.arrowUpBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpBack : '']}></div>
+              <div style={[styles.arrowDownBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownBack : '']}></div>
+            </div>
           </div>
           <Dots
             dotsCount={this.props.worksList.length}
@@ -128,7 +129,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { fetchWorks })(Radium(Work));
 
-var fadingIn = Radium.keyframes({
+var fadeInLeft = Radium.keyframes({
   'from': {
     opacity: '0',
     transform: 'translateX(-15px)'
@@ -139,80 +140,123 @@ var fadingIn = Radium.keyframes({
   }
 });
 
-var growNextUp = Radium.keyframes({
+var fadeIn = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateY(-6px) rotate(45deg) scaleX(0)'
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(-6px) rotate(45deg) scaleX(1)'
   }
 });
 
-var growNextDown = Radium.keyframes({
+var growLeft = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateY(6px) rotate(-45deg) scaleX(0)'
+    transform: 'scaleX(0)'
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(6px) rotate(-45deg) scaleX(1)'
+    transform: 'scaleX(1)'
   }
 });
 
-var growBackUp = Radium.keyframes({
+var slideUp = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateY(-6px) rotate(-45deg) scaleX(0)'
+    transform: 'translate(-50%, -40%)'
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(-6px) rotate(-45deg) scaleX(1)'
+    transform: 'translate(-50%, -50%)'
   }
 });
 
-var growBackDown = Radium.keyframes({
+var slideDown = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateY(6px) rotate(45deg) scaleX(0)'
+    transform: 'translateY(0)'
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(6px) rotate(45deg) scaleX(1)'
+    transform: 'translateY(50px)'
   }
 });
 
 var styles = {
+  arrowContainerNext: {
+    position: 'absolute',
+    top: 'calc(50% - 20px)',
+    left: '-61px',
+    zIndex: '1',
+    padding: '20px',
+    opacity: '1',
+    transition: '0.3s ease all'
+  },
+  arrowContainerBack: {
+    position: 'absolute',
+    top: 'calc(50% - 20px)',
+    zIndex: '1',
+    padding: '20px',
+    transition: '0.5s ease all'
+  },
+  arrowUpNext: {
+    transform: 'translateY(-6px) rotate(45deg) scaleX(1)',
+    opacity: '1',
+  },
+  arrowUpNextReverse: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(-6px) rotate(45deg) scaleX(0)',
+    transition: '0.8s ease all',
+    opacity: '0',
+  },
+  arrowDownNext: {
+    transform: 'translateY(6px) rotate(-45deg) scaleX(1)',
+    opacity: '1',
+  },
+  arrowDownNextReverse: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(6px) rotate(-45deg) scaleX(0)',
+    transition: '1.2s ease all',
+    opacity: '0'
+  },
+  arrowUpBack: {
+    transform: 'translateY(-6px) rotate(-45deg) scaleX(1)',
+    opacity: '1',
+  },
+  arrowUpBackReverse: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transition: '0.8s ease all',
+    transform: 'translateY(-6px) rotate(-45deg) scaleX(0)',
+    opacity: '0',
+  },
+  arrowDownBack: {
+    transform: 'translateY(6px) rotate(45deg) scaleX(1)',
+    opacity: '1',
+  },
+  arrowDownBackReverse: {
+    width: '21px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'translateY(6px) rotate(45deg) scaleX(0)',
+    transition: '1.2s ease all',
+    opacity: '0'
+  },
+  hiddenHackContainer: {
+    display: 'none',
+    pointerEvents: 'none'
+  },
   landingContainer: {
     height: '100vh',
-    left: '0px',
     position: 'relative',
-    transition: 'left 0.4s ease-in-out',
-  },
-  slidein: {
-    left: '-200px',
-    position: 'relative',
-    transition: 'left 1.0s cubic-bezier(0.43, 0.17, 0.28, 0.99)',
-
-    '@media (min-width: 720px)': {
-      minHeight: 'calc(100vh - 80px)',
-      left: '-300px',
-    }
-  },
-  workGallery: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    textAlign: 'center',
-    backgroundColor: 'red',
-    width: '720px',
-    height: '420px',
-
-    // Need to add empty :hover styles here to tell Radium to track this element's
-    // state.
-    ':hover': {},
+    transition: 'transform 1s ease',
+    overflow: 'hidden',
+    backgroundColor: '#191919'
   },
   navigationNext: {
     position: 'absolute',
@@ -220,73 +264,84 @@ var styles = {
     zIndex: '1',
     height: '100%'
   },
-  arrowContainerNext: {
-    position: 'absolute',
-    top: 'calc(50% - 20px)',
-    left: '-61px',
-    zIndex: '1',
-    padding: '20px',
-  },
-  arrowContainerBack: {
-    position: 'absolute',
-    top: 'calc(50% - 20px)',
-    zIndex: '1',
-    padding: '20px'
-  },
-  arrowUpNext: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: 'white',
-    transform: 'translateY(-6px) rotate(45deg)',
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: growNextUp,
-  },
-  arrowDownNext: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: 'white',
-    transform: 'translateY(6px) rotate(-45deg)',
-    opacity: '0',
-    animation: 'ease 2.4s forwards',
-    animationName: growNextDown,
-  },
   navigationBack: {
     position: 'absolute',
     left: '0',
     zIndex: '1',
     height: '100%'
   },
-  arrowUpBack: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: 'white',
-    transform: 'translateY(-6px) rotate(-45deg)',
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: growBackUp,
+  slidein: {
+    transform: 'translateX(-300px)',
+    position: 'relative',
+    transition: 'transform 1.2s ease',
+    opacity: '0.2',
+
+    '@media (min-width: 720px)': {
+      minHeight: 'calc(100vh - 80px)',
+      transform: 'translateX(-400px)',
+    }
   },
-  arrowDownBack: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: 'white',
-    transform: 'translateY(6px) rotate(45deg)',
+  workGallery: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    textAlign: 'center',
+    backgroundColor: '#0C0C0C',
+    width: '720px',
+    height: '420px',
     opacity: '0',
     animation: 'ease 2.4s forwards',
-    animationName: growBackDown,
+    animationName: slideUp,
+
+    // Need to add empty :hover styles here to tell Radium to track this element's
+    // state.
+    ':hover': {},
+  },
+  workGalleryHeader: {
+    position: 'absolute',
+    top: '-30px',
+    color: 'white',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  workGalleryHeaderLine: {
+    height: '1px',
+    backgroundColor: 'white',
+    flex: '1 1 90%',
+    transformOrigin: 'left',
+    opacity: '0',
+    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
+    animationName: growLeft
+  },
+  workGalleryHeaderTitle: {
+    textAlign: 'right',
+    flex: '1 1 auto',
+    opacity: '0',
+    animation: 'ease 0.4s forwards',
+    animationName: fadeInLeft,
+    animationDelay: '1s',
   },
   worksImage: {
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     backgroundPosition: 'center center',
     opacity: '0',
-    animation: 'ease 2.4s forwards',
-    animationName: fadingIn,
+    animation: 'ease 1.2s forwards',
+    animationName: fadeIn,
     height: '100%',
     width: '100%'
   },
-  hiddenHackContainer: {
-    display: 'none',
-    pointerEvents: 'none'
+  worksTitle: {
+    position: 'absolute',
+    bottom: '0px',
+    fontSize: '40px',
+    fontWeight: 'bold',
+    left: '0',
+    color: 'white',
+    opacity: '0',
+    animation: 'ease 0.8s forwards',
+    animationName: slideDown,
+    animationDelay: '0.4s',
   }
 }

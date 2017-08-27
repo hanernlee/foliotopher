@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fadeIn } from 'react-animations';
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import { Link as ReactRouterLink } from 'react-router-dom';
@@ -35,10 +34,12 @@ class NavigationMenu extends Component {
 
   renderMenu() {
     const linkContainerDisplay = this.props.navigationState ? styles.linkContainerDisplay : '';
+    const linkContainerDisplayTwo = this.props.navigationState ? styles.linkContainerDisplayTwo : '';
+    const linkContainerDisplayThree = this.props.navigationState ? styles.linkContainerDisplayThree : '';
 
-    return this.props.navigationLinks.map((link) => {
+    return this.props.navigationLinks.map((link, index) => {
       return (
-        <div style={[styles.linkContainer, linkContainerDisplay]} key={link.label}>
+        <div style={[styles.linkContainer, index === 0 ? linkContainerDisplay : '', index === 1 ? linkContainerDisplayTwo : '', index === 2 ? linkContainerDisplayThree : '']} key={link.label}>
           <Link to={link.url} style={styles.link}>{link.label}</Link>
         </div>
       );
@@ -70,6 +71,17 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radium(NavigationMenu));
+
+var fadeInLeft = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(20px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateX(0)'
+  }
+});
 
 var styles = {
   navigationMenu: {
@@ -116,7 +128,20 @@ var styles = {
     margin: '35px auto',
   },
   linkContainerDisplay: {
-    animation: '2.4s',
-    animationName: Radium.keyframes(fadeIn, 'fadeIn')
+    opacity: '0',
+    animation: 'ease 2s forwards',
+    animationName: fadeInLeft,
+  },
+  linkContainerDisplayTwo: {
+    opacity: '0',
+    animation: 'ease 2s forwards',
+    animationName: fadeInLeft,
+    animationDelay: '0.4s'
+  },
+  linkContainerDisplayThree: {
+    opacity: '0',
+    animation: 'ease 2s forwards',
+    animationName: fadeInLeft,
+    animationDelay: '0.8s'
   }
 }

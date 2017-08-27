@@ -68,17 +68,31 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radium(Hamburger));
 
+var slideUp = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'scaleX(0)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'scaleX(1)'
+  }
+});
+
 var styles = {
   base: {
     backgroundColor: 'transparent',
-    borderRadius: '50%',
-    boxShadow: '3px 3px 15px rgba(0,0,0,0.5)',
     padding: '16px',
     position: 'fixed',
     right: '15px',
     top: '15px',
     zIndex: '2',
     cursor: 'pointer',
+    opacity: '0',
+    transformOrigin: 'left',
+    animation: 'ease 1.2s forwards',
+    animationName: slideUp,
+    animationDelay: '0.8s',
 
     // Need to add empty :hover styles here to tell Radium to track this element's
     // state.
@@ -99,8 +113,8 @@ var styles = {
     height: '2px',
     left: '0px',
     position: 'absolute',
-    transition: 'all 0.3s ease',
-    width: '24px'
+    width: '24px',
+    transition: '0.4s ease all',
   },
   burgerTop: {
     top: '0px'
@@ -110,7 +124,7 @@ var styles = {
   },
   burgerTopClose: {
     top: '3px',
-    transform: 'translateY(7px) rotate(-45deg)'
+    transform: 'translateY(7px) rotate(-45deg)',
   },
   burgerMiddle: {
     top: '10px'
