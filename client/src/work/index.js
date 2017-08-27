@@ -91,29 +91,33 @@ class Work extends Component {
             <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />
           )}
         </div>
-        <div key="gallery" style={styles.workGallery}>
-          {galleryImageLoaded && <div style={styles.workGalleryHeader}>
-            <div style={styles.workGalleryHeaderLine}></div>
-            <div style={styles.workGalleryHeaderTitle}>Work</div>
-          </div>}
-          <div onClick={this.navigateNext} style={styles.navigationNext}>
-            <div style={styles.arrowContainerNext}>
-              <div style={[styles.arrowUpNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpNext : '']}></div>
-              <div style={[styles.arrowDownNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownNext : '']}></div>
+        <div style={styles.workGalleryHolder}>
+          <div key="gallery" style={styles.workGallery}>
+            <div style={styles.aspectRatio}>
+              {galleryImageLoaded && <div style={styles.workGalleryHeader}>
+                <div style={styles.workGalleryHeaderLine}></div>
+                <div style={styles.workGalleryHeaderTitle}>Work</div>
+              </div>}
+              <div onClick={this.navigateNext} style={styles.navigationNext}>
+                <div style={styles.arrowContainerNext}>
+                  <div style={[styles.arrowUpNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpNext : '']}></div>
+                  <div style={[styles.arrowDownNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownNext : '']}></div>
+                </div>
+              </div>
+              <div onClick={this.navigateBack} style={styles.navigationBack}>
+                <div style={styles.arrowContainerBack}>
+                  <div style={[styles.arrowUpBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpBack : '']}></div>
+                  <div style={[styles.arrowDownBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownBack : '']}></div>
+                </div>
+              </div>
+              <Dots
+                dotsCount={this.props.worksList.length}
+                currentCount={this.state.count}
+                dotClick={this.dotClick}
+              />
+              {this.renderWork()}
             </div>
           </div>
-          <div onClick={this.navigateBack} style={styles.navigationBack}>
-            <div style={styles.arrowContainerBack}>
-              <div style={[styles.arrowUpBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpBack : '']}></div>
-              <div style={[styles.arrowDownBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownBack : '']}></div>
-            </div>
-          </div>
-          <Dots
-            dotsCount={this.props.worksList.length}
-            currentCount={this.state.count}
-            dotClick={this.dotClick}
-          />
-          {this.renderWork()}
         </div>
       </div>
     );
@@ -247,6 +251,13 @@ var styles = {
     transition: '1.2s ease all',
     opacity: '0'
   },
+  aspectRatio: {
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    left: '0',
+    right: '0'
+  },
   hiddenHackContainer: {
     display: 'none',
     pointerEvents: 'none'
@@ -256,7 +267,14 @@ var styles = {
     position: 'relative',
     transition: 'transform 1s ease',
     overflow: 'hidden',
-    backgroundColor: '#191919'
+    backgroundColor: '#191919',
+
+    '@media (max-width: 830px)': {
+      padding: '0 56px'
+    },
+    '@media (max-width: 720px)': {
+      padding: '0 32px'
+    }
   },
   navigationNext: {
     position: 'absolute',
@@ -287,8 +305,8 @@ var styles = {
     left: '50%',
     textAlign: 'center',
     backgroundColor: '#0C0C0C',
-    width: '720px',
-    height: '420px',
+    paddingTop: '56.25%',
+    width: '100%',
     opacity: '0',
     animation: 'ease 2.4s forwards',
     animationName: slideUp,
@@ -296,6 +314,20 @@ var styles = {
     // Need to add empty :hover styles here to tell Radium to track this element's
     // state.
     ':hover': {},
+
+    '@media (max-width: 780px)': {
+      width: '100%'
+    }
+  },
+  workGalleryHolder: {
+    position: 'relative',
+    height: '100%',
+    width: '720px',
+    margin: '0 auto',
+
+    '@media (max-width: 830px)': {
+      width: '100%'
+    },
   },
   workGalleryHeader: {
     position: 'absolute',
@@ -312,7 +344,11 @@ var styles = {
     transformOrigin: 'left',
     opacity: '0',
     animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: growLeft
+    animationName: growLeft,
+
+    '@media (max-width: 515px)': {
+      flex: '1 1 85%',
+    },
   },
   workGalleryHeaderTitle: {
     textAlign: 'right',
