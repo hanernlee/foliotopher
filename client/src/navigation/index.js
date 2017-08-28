@@ -9,9 +9,12 @@ import { toggleNavigation } from '../hamburger/actions';
 const Link = Radium(ReactRouterLink);
 
 class NavigationMenu extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      label: 'home'
+    };
     this.handleClick = this.handleClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
@@ -36,11 +39,22 @@ class NavigationMenu extends Component {
     const linkContainerDisplay = this.props.navigationState ? styles.linkContainerDisplay : '';
     const linkContainerDisplayTwo = this.props.navigationState ? styles.linkContainerDisplayTwo : '';
     const linkContainerDisplayThree = this.props.navigationState ? styles.linkContainerDisplayThree : '';
+    const currentRoute = this.props.currentRoute;
+
+    var highlightedLabel;
+    if (currentRoute === '/work') {
+      highlightedLabel = 'Work';
+    } else if (currentRoute === '/contact') {
+      highlightedLabel = 'Contact';
+    } else {
+      highlightedLabel = 'Home';
+    }
+
 
     return this.props.navigationLinks.map((link, index) => {
       return (
         <div style={[styles.linkContainer, index === 0 ? linkContainerDisplay : '', index === 1 ? linkContainerDisplayTwo : '', index === 2 ? linkContainerDisplayThree : '']} key={link.label}>
-          <Link to={link.url} style={styles.link}>{link.label}</Link>
+          <Link to={link.url} style={[styles.link, highlightedLabel === link.label ? styles.highlightLink : '']}>{link.label}</Link>
         </div>
       );
     });
@@ -62,7 +76,8 @@ class NavigationMenu extends Component {
 function mapStateToProps(state) {
   return {
     navigationLinks: state.navigationLinks,
-    navigationState: state.navigationState
+    navigationState: state.navigationState,
+    currentRoute: state.currentRoute
   };
 };
 
@@ -106,7 +121,7 @@ var styles = {
     }
   },
   menuContainer: {
-    color: 'white',
+    color: '#FFFFFF',
     position: 'absolute',
     top: '40%',
     left: '50%',
@@ -114,14 +129,17 @@ var styles = {
     zIndex: '1',
     textAlign: 'center'
   },
+  highlightLink: {
+    color: '#FFFFFF'
+  },
   link: {
     textDecoration: 'none',
-    color: 'rgb(184, 184, 184)',
+    color: '#7F7F7F',
     fontSize: '28px',
     transition: '0.3s ease all',
 
     ':hover': {
-      color: 'white'
+      color: '#FFFFFF'
     }
   },
   linkContainer: {

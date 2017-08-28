@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 
 import { fetchWorks } from '../firebase/actions';
+import { getRoute } from '../routes/actions';
+
 import Dots from './dots/index';
 
 class Work extends Component {
@@ -17,6 +19,7 @@ class Work extends Component {
 
   componentDidMount() {
     this.props.fetchWorks();
+    this.props.getRoute(this.props.match.url);
   }
 
   dotClick = (dotIndex) => {
@@ -66,8 +69,9 @@ class Work extends Component {
       return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
           return (
-            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}>
-              <span style={styles.worksTitle}>{work.title}</span>
+            <div key={index} style={styles.worksImageContainer}>
+              <div onClick={this.navigateBack} key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
+              <a key={work.github} target="_blank" href={work.github} style={styles.worksTitle}>{work.title}</a>
             </div>
           );
         }
@@ -131,7 +135,7 @@ function mapStateToProps(state) {
   };
 };
 
-export default connect(mapStateToProps, { fetchWorks })(Radium(Work));
+export default connect(mapStateToProps, { fetchWorks, getRoute })(Radium(Work));
 
 var fadeInLeft = Radium.keyframes({
   'from': {
@@ -182,7 +186,7 @@ var slideDown = Radium.keyframes({
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(50px)'
+    transform: 'translateY(55px)'
   }
 });
 
@@ -210,7 +214,7 @@ var styles = {
   arrowUpNextReverse: {
     width: '21px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     transform: 'translateY(-6px) rotate(45deg) scaleX(0)',
     transition: '0.8s ease all',
     opacity: '0',
@@ -222,7 +226,7 @@ var styles = {
   arrowDownNextReverse: {
     width: '21px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     transform: 'translateY(6px) rotate(-45deg) scaleX(0)',
     transition: '1.2s ease all',
     opacity: '0'
@@ -234,7 +238,7 @@ var styles = {
   arrowUpBackReverse: {
     width: '21px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     transition: '0.8s ease all',
     transform: 'translateY(-6px) rotate(-45deg) scaleX(0)',
     opacity: '0',
@@ -246,7 +250,7 @@ var styles = {
   arrowDownBackReverse: {
     width: '21px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     transform: 'translateY(6px) rotate(45deg) scaleX(0)',
     transition: '1.2s ease all',
     opacity: '0'
@@ -280,13 +284,21 @@ var styles = {
     position: 'absolute',
     right: '0',
     zIndex: '1',
-    height: '100%'
+    height: '100%',
+
+    '@media (max-width: 415px)': {
+      display: 'none'
+    },
   },
   navigationBack: {
     position: 'absolute',
     left: '0',
     zIndex: '1',
-    height: '100%'
+    height: '100%',
+
+    '@media (max-width: 415px)': {
+      display: 'none'
+    },
   },
   slidein: {
     transform: 'translateX(-300px)',
@@ -332,14 +344,14 @@ var styles = {
   workGalleryHeader: {
     position: 'absolute',
     top: '-30px',
-    color: 'white',
+    color: '#FFFFFF',
     width: '100%',
     display: 'flex',
     alignItems: 'center'
   },
   workGalleryHeaderLine: {
     height: '1px',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     flex: '1 1 90%',
     transformOrigin: 'left',
     opacity: '0',
@@ -358,6 +370,9 @@ var styles = {
     animationName: fadeInLeft,
     animationDelay: '1s',
   },
+  worksImageContainer: {
+    height: '100%'
+  },
   worksImage: {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -374,10 +389,16 @@ var styles = {
     fontSize: '40px',
     fontWeight: 'bold',
     left: '0',
-    color: 'white',
+    color: '#7F7F7F',
     opacity: '0',
     animation: 'ease 0.8s forwards',
     animationName: slideDown,
     animationDelay: '0.4s',
+    textDecoration: 'none',
+    transition: '1.2s ease all',
+
+    ':hover': {
+      color: '#FFFFFF'
+    }
   }
 }

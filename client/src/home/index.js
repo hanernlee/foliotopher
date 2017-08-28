@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import { fadeIn } from 'react-animations';
 
+import { getRoute } from '../routes/actions';
+
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 const cloudURL = process.env.PUBLIC_URL + '/cloud3.png';
 const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
@@ -15,6 +17,10 @@ class App extends Component {
     this.state = {
       imageReady: false,
     }
+  }
+
+  componentDidMount() {
+    this.props.getRoute(this.props.match.url);
   }
 
   onLoad(work) {
@@ -63,7 +69,7 @@ function mapStateToProps(state) {
   };
 };
 
-export default connect(mapStateToProps)(Radium(App));
+export default connect(mapStateToProps, { getRoute })(Radium(App));
 
 var movingCloud = Radium.keyframes({
   '0%': {
@@ -153,7 +159,7 @@ var styles = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    color: 'white',
+    color: '#FFFFFF',
     textAlign: 'center',
     zIndex: '1',
   },

@@ -48,7 +48,7 @@ var styles = {
     animationDelay: '1.2s'
   },
   dot: {
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     display: 'inline-block',
     width: '3px',
     height: '10px',
