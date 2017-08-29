@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
+import SwipeableViews from 'react-swipeable-views';
 
 import { fetchWorks } from '../firebase/actions';
 import { getRoute } from '../routes/actions';
@@ -64,18 +65,30 @@ class Work extends Component {
     });
   }
 
-  renderWork() {
+  onChangeIndex(index, indexLatest) {
+    this.setState({
+      count: index
+    });
+  }
+
+  renderWorkTitle() {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
           return (
-            <div key={index} style={styles.worksImageContainer}>
-              <div onClick={this.navigateBack} key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
-              <a key={work.github} target="_blank" href={work.github} style={styles.worksTitle}>{work.title}</a>
-            </div>
+            <div key={work.key} style={styles.worksTitle}>{work.title}</div>
           );
         }
-        return false;
+      });
+    }
+  }
+
+  renderWorkImage() {
+    if (this.props.worksList) {
+      return this.state.workEntries.map((work, index) => {
+          return (
+            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
+          );
       });
     }
   }
@@ -97,29 +110,16 @@ class Work extends Component {
         </div>
         <div style={styles.workGalleryHolder}>
           <div key="gallery" style={styles.workGallery}>
+            {this.renderWorkTitle()}
             <div style={styles.aspectRatio}>
-              {galleryImageLoaded && <div style={styles.workGalleryHeader}>
-                <div style={styles.workGalleryHeaderLine}></div>
-                <div style={styles.workGalleryHeaderTitle}>Work</div>
-              </div>}
-              <div onClick={this.navigateNext} style={styles.navigationNext}>
-                <div style={styles.arrowContainerNext}>
-                  <div style={[styles.arrowUpNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpNext : '']}></div>
-                  <div style={[styles.arrowDownNextReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownNext : '']}></div>
-                </div>
-              </div>
-              <div onClick={this.navigateBack} style={styles.navigationBack}>
-                <div style={styles.arrowContainerBack}>
-                  <div style={[styles.arrowUpBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowUpBack : '']}></div>
-                  <div style={[styles.arrowDownBackReverse, Radium.getState(this.state, 'gallery', ':hover') ? styles.arrowDownBack : '']}></div>
-                </div>
-              </div>
               <Dots
                 dotsCount={this.props.worksList.length}
                 currentCount={this.state.count}
                 dotClick={this.dotClick}
               />
-              {this.renderWork()}
+            <SwipeableViews index={this.state.count} enableMouseEvents onChangeIndex={this.onChangeIndex.bind(this)} style={styles.swipeableViews}>
+              {this.renderWorkImage()}
+            </SwipeableViews>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default connect(mapStateToProps, { fetchWorks, getRoute })(Radium(Work));
 var fadeInLeft = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateX(-15px)'
+    transform: 'translateX(-50px)'
   },
   'to': {
     opacity: '1',
@@ -157,17 +157,6 @@ var fadeIn = Radium.keyframes({
   }
 });
 
-var growLeft = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'scaleX(0)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'scaleX(1)'
-  }
-});
-
 var slideUp = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -179,82 +168,21 @@ var slideUp = Radium.keyframes({
   }
 });
 
-var slideDown = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translateY(0)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translateY(55px)'
-  }
-});
-
 var styles = {
-  arrowContainerNext: {
-    position: 'absolute',
-    top: 'calc(50% - 20px)',
-    left: '-61px',
-    zIndex: '1',
-    padding: '20px',
-    opacity: '1',
-    transition: '0.3s ease all'
-  },
-  arrowContainerBack: {
-    position: 'absolute',
-    top: 'calc(50% - 20px)',
-    zIndex: '1',
-    padding: '20px',
-    transition: '0.5s ease all'
-  },
-  arrowUpNext: {
-    transform: 'translateY(-6px) rotate(45deg) scaleX(1)',
-    opacity: '1',
-  },
-  arrowUpNextReverse: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: '#FFFFFF',
-    transform: 'translateY(-6px) rotate(45deg) scaleX(0)',
-    transition: '0.8s ease all',
-    opacity: '0',
-  },
-  arrowDownNext: {
-    transform: 'translateY(6px) rotate(-45deg) scaleX(1)',
-    opacity: '1',
-  },
-  arrowDownNextReverse: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: '#FFFFFF',
-    transform: 'translateY(6px) rotate(-45deg) scaleX(0)',
-    transition: '1.2s ease all',
-    opacity: '0'
-  },
-  arrowUpBack: {
-    transform: 'translateY(-6px) rotate(-45deg) scaleX(1)',
-    opacity: '1',
-  },
-  arrowUpBackReverse: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: '#FFFFFF',
-    transition: '0.8s ease all',
-    transform: 'translateY(-6px) rotate(-45deg) scaleX(0)',
-    opacity: '0',
-  },
-  arrowDownBack: {
-    transform: 'translateY(6px) rotate(45deg) scaleX(1)',
-    opacity: '1',
-  },
-  arrowDownBackReverse: {
-    width: '21px',
-    height: '2px',
-    backgroundColor: '#FFFFFF',
-    transform: 'translateY(6px) rotate(45deg) scaleX(0)',
-    transition: '1.2s ease all',
-    opacity: '0'
-  },
+  slide: {
+  padding: 15,
+  minHeight: 100,
+  color: '#fff',
+},
+slide1: {
+  background: '#FEA900',
+},
+slide2: {
+  background: '#B3DC4A',
+},
+slide3: {
+  background: '#6AC0FF',
+},
   aspectRatio: {
     position: 'absolute',
     top: '0',
@@ -311,6 +239,9 @@ var styles = {
       transform: 'translateX(-400px)',
     }
   },
+  swipeableViews: {
+    height: '100%'
+  },
   workGallery: {
     position: 'absolute',
     top: '50%',
@@ -341,37 +272,17 @@ var styles = {
       width: '100%'
     },
   },
-  workGalleryHeader: {
-    position: 'absolute',
-    top: '-30px',
-    color: '#FFFFFF',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center'
-  },
-  workGalleryHeaderLine: {
-    height: '1px',
-    backgroundColor: '#FFFFFF',
-    flex: '1 1 90%',
-    transformOrigin: 'left',
-    opacity: '0',
-    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: growLeft,
-
-    '@media (max-width: 515px)': {
-      flex: '1 1 85%',
-    },
-  },
-  workGalleryHeaderTitle: {
-    textAlign: 'right',
-    flex: '1 1 auto',
-    opacity: '0',
-    animation: 'ease 0.4s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '1s',
-  },
   worksImageContainer: {
     height: '100%'
+  },
+  worksTitle: {
+    position: 'absolute',
+    top: '-30px',
+    left: '0',
+    color: '#FFFFFF',
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeInLeft,
   },
   worksImage: {
     backgroundRepeat: 'no-repeat',
@@ -381,24 +292,14 @@ var styles = {
     animation: 'ease 1.2s forwards',
     animationName: fadeIn,
     height: '100%',
-    width: '100%'
-  },
-  worksTitle: {
-    position: 'absolute',
-    bottom: '0px',
-    fontSize: '40px',
-    fontWeight: 'bold',
-    left: '0',
-    color: '#7F7F7F',
-    opacity: '0',
-    animation: 'ease 0.8s forwards',
-    animationName: slideDown,
-    animationDelay: '0.4s',
-    textDecoration: 'none',
-    transition: '1.2s ease all',
+    width: '100%',
+    transition: '0.8s ease all',
+    filter: 'opacity(20%) grayscale(100%)',
 
     ':hover': {
-      color: '#FFFFFF'
+      cursor: 'pointer',
+      filter: 'none',
+      transform: 'scale(1.1)'
     }
-  }
+  },
 }

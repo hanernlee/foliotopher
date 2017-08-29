@@ -39,11 +39,14 @@ class NavigationMenu extends Component {
     const linkContainerDisplay = this.props.navigationState ? styles.linkContainerDisplay : '';
     const linkContainerDisplayTwo = this.props.navigationState ? styles.linkContainerDisplayTwo : '';
     const linkContainerDisplayThree = this.props.navigationState ? styles.linkContainerDisplayThree : '';
+    const linkContainerDisplayFour = this.props.navigationState ? styles.linkContainerDisplayFour : '';
     const currentRoute = this.props.currentRoute;
 
     var highlightedLabel;
     if (currentRoute === '/work') {
       highlightedLabel = 'Work';
+    } else if (currentRoute === '/about') {
+      highlightedLabel = 'About';
     } else if (currentRoute === '/contact') {
       highlightedLabel = 'Contact';
     } else {
@@ -53,7 +56,7 @@ class NavigationMenu extends Component {
 
     return this.props.navigationLinks.map((link, index) => {
       return (
-        <div style={[styles.linkContainer, index === 0 ? linkContainerDisplay : '', index === 1 ? linkContainerDisplayTwo : '', index === 2 ? linkContainerDisplayThree : '']} key={link.label}>
+        <div style={[styles.linkContainer, index === 0 ? linkContainerDisplay : '', index === 1 ? linkContainerDisplayTwo : '', index === 2 ? linkContainerDisplayThree : '', index === 3 ? linkContainerDisplayFour : '']} key={link.label}>
           <Link to={link.url} style={[styles.link, highlightedLabel === link.label ? styles.highlightLink : '']}>{link.label}</Link>
         </div>
       );
@@ -147,19 +150,25 @@ var styles = {
   },
   linkContainerDisplay: {
     opacity: '0',
-    animation: 'ease 2s forwards',
+    animation: 'ease 1.2s forwards',
     animationName: fadeInLeft,
   },
   linkContainerDisplayTwo: {
     opacity: '0',
-    animation: 'ease 2s forwards',
+    animation: 'ease 1.2s forwards',
     animationName: fadeInLeft,
     animationDelay: '0.4s'
   },
   linkContainerDisplayThree: {
     opacity: '0',
-    animation: 'ease 2s forwards',
+    animation: 'ease 1.2s forwards',
     animationName: fadeInLeft,
     animationDelay: '0.8s'
+  },
+  linkContainerDisplayFour: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeInLeft,
+    animationDelay: '1.2s'
   }
 }

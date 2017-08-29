@@ -6,7 +6,6 @@ import { fadeIn } from 'react-animations';
 import { getRoute } from '../routes/actions';
 
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
-const cloudURL = process.env.PUBLIC_URL + '/cloud3.png';
 const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 
 
@@ -55,7 +54,6 @@ class App extends Component {
             <div style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
           </div>
           <div style={[styles.cloudTwo, darkenCloud]}></div>
-          <div style={[styles.cloud, darkenCloud]}></div>
           <div style={[styles.backgroundImage, darkenImage]}></div>
         </div>
       );
@@ -96,17 +94,6 @@ var fadeInDropdown = Radium.keyframes({
   }
 });
 
-var fadeInDropup = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translateY(15px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translateY(0)'
-  }
-});
-
 var styles = {
   landingContainer: {
     height: '100vh',
@@ -124,21 +111,6 @@ var styles = {
     animation: 'x 2.4s linear forwards',
     animationName: Radium.keyframes(fadeIn, 'fadeIn')
   },
-  cloud: {
-    backgroundImage: 'url(' + cloudURL + ')',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    backgroundPosition: 'center center',
-    width: '10%',
-    height: '10%',
-    position: 'absolute',
-    top: '55%',
-    zIndex: '1',
-    opacity: '0',
-    transition: '0.3s ease all',
-    animation: 'x 150s linear infinite',
-    animationName: movingCloud,
-  },
   cloudTwo: {
     backgroundImage: 'url(' + cloudTwoURL + ')',
     backgroundRepeat: 'no-repeat',
@@ -151,7 +123,7 @@ var styles = {
     zIndex: '1',
     opacity: '0',
     transition: '0.3s ease all',
-    animation: 'x 100s linear infinite',
+    animation: 'x 80s linear infinite',
     animationName: movingCloud,
   },
   headLine: {
@@ -166,13 +138,14 @@ var styles = {
   name: {
     fontSize: '40px',
     opacity: '0',
-    animation: 'x 1.2s linear forwards',
+    animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,
   },
   strapLine: {
     opacity: '0',
-    animation: 'x 1.2s linear forwards',
-    animationName: fadeInDropup,
+    animation: 'x 0.8s linear forwards',
+    animationName: fadeInDropdown,
+    animationDelay: '0.8s'
   },
   hidden: {
     opacity: '0',
@@ -181,7 +154,7 @@ var styles = {
   slidein: {
     transform: 'translateX(-300px)',
     position: 'relative',
-    transition: 'transform 1.2s ease',
+    transition: 'transform 0.8s ease',
 
     '@media (min-width: 720px)': {
       minHeight: 'calc(100vh - 80px)',
