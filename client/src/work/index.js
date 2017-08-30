@@ -14,7 +14,8 @@ class Work extends Component {
 
     this.state = {
       count: 0,
-      workEntries: []
+      workEntries: [],
+      selectedWork: false
     }
   }
 
@@ -25,39 +26,40 @@ class Work extends Component {
 
   dotClick = (dotIndex) => {
     this.setState({
-      count: dotIndex
+      count: dotIndex,
+      selectedWork: false
     });
   }
 
-  navigateNext = () => {
-    const workListLength = this.props.worksList.length - 1;
-    const currentCount = this.state.count;
-
-    if (currentCount >= 0 && currentCount !== workListLength) {
-      this.setState({
-        count: currentCount + 1
-      });
-    } else {
-      this.setState({
-        count: 0
-      });
-    }
-  }
-
-  navigateBack = () => {
-    const workListLength = this.props.worksList.length - 1;
-    const currentCount = this.state.count;
-
-    if (currentCount >= 1) {
-      this.setState({
-        count: currentCount - 1
-      });
-    } else {
-      this.setState({
-        count: workListLength
-      });
-    }
-  }
+  // navigateNext = () => {
+  //   const workListLength = this.props.worksList.length - 1;
+  //   const currentCount = this.state.count;
+  //
+  //   if (currentCount >= 0 && currentCount !== workListLength) {
+  //     this.setState({
+  //       count: currentCount + 1
+  //     });
+  //   } else {
+  //     this.setState({
+  //       count: 0
+  //     });
+  //   }
+  // }
+  //
+  // navigateBack = () => {
+  //   const workListLength = this.props.worksList.length - 1;
+  //   const currentCount = this.state.count;
+  //
+  //   if (currentCount >= 1) {
+  //     this.setState({
+  //       count: currentCount - 1
+  //     });
+  //   } else {
+  //     this.setState({
+  //       count: workListLength
+  //     });
+  //   }
+  // }
 
   onLoad(work) {
     this.setState(({ workEntries }) => {
@@ -67,35 +69,81 @@ class Work extends Component {
 
   onChangeIndex(index, indexLatest) {
     this.setState({
-      count: index
+      count: index,
+      selectedWork: false
     });
   }
 
-  renderWorkTitle() {
+  renderInfo() {
+    const selectedWork = this.state.selectedWork;
+
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
           return (
-            <div key={work.key} style={styles.worksTitle}>{work.title}</div>
+            <div key={index} onClick={this.selectWork.bind(this, work)} style={styles.infoContainer}>
+              <div style={[styles.infoLine, selectedWork ? styles.hideInfoLine : styles.showInfoLine]}></div>
+              <div style={[styles.info, selectedWork ? styles.hideInfo : styles.showInfo]}>Info</div>
+            </div>
           );
         }
+        return false;
+      });
+    }
+  }
+
+  renderWorkTitle() {
+    const selectedWork = this.state.selectedWork;
+
+    if (this.props.worksList) {
+      return this.state.workEntries.map((work, index) => {
+        if (this.state.count === index) {
+          return (
+            <div key={work.key} style={styles.worksContainer}>
+              <span style={[styles.worksTitle, selectedWork ? styles.hideWorksTitle : styles.showWorksTitle]}>{work.title}</span>
+              <span style={[styles.worksDescription, selectedWork ? styles.hideWorksDescription : styles.showWorksDescription]}>
+                - Retro Bit Bit Bit
+              </span>
+            </div>
+          );
+        }
+        return false;
       });
     }
   }
 
   renderWorkImage() {
+    const selectedWork = this.state.selectedWork;
+
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
           return (
-            <div key={work.key} style={[styles.worksImage, {backgroundImage: `url(${work.image})`}]}></div>
+            <div key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage ,{backgroundImage: `url(${work.image})`}]}></div>
           );
       });
     }
   }
 
+  renderSelectedWork() {
+    const selectedWork = this.state.selectedWork;
+
+    return (
+      <div style={[styles.selectedWorkContainer, selectedWork ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
+        {selectedWork.title}
+      </div>
+    )
+  }
+
+  selectWork(work) {
+    this.setState({
+      selectedWork: work
+    });
+  }
+
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
     const galleryImageLoaded = this.state.workEntries.length ? true : false;
+    const work = this.state.selectedWork;
 
     if (!this.props.worksList) {
       return (<div></div>);
@@ -110,6 +158,7 @@ class Work extends Component {
         </div>
         <div style={styles.workGalleryHolder}>
           <div key="gallery" style={styles.workGallery}>
+            {this.renderSelectedWork()}
             {this.renderWorkTitle()}
             <div style={styles.aspectRatio}>
               <Dots
@@ -121,6 +170,7 @@ class Work extends Component {
               {this.renderWorkImage()}
             </SwipeableViews>
             </div>
+            {this.renderInfo()}
           </div>
         </div>
       </div>
@@ -157,6 +207,92 @@ var fadeIn = Radium.keyframes({
   }
 });
 
+var fadeOut = Radium.keyframes({
+  'from': {
+    opacity: '1',
+  },
+  'to': {
+    opacity: '0',
+  }
+});
+
+var grow = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'scaleY(0)',
+  },
+  'to': {
+    opacity: '0.2',
+    transform: 'scaleY(1)',
+  }
+});
+
+var shrink = Radium.keyframes({
+  'from': {
+    opacity: '0.2',
+    transform: 'scaleY(1)',
+  },
+  'to': {
+    opacity: '0',
+    transform: 'scaleY(0)',
+  }
+});
+
+var fadeInLeftHide = Radium.keyframes({
+  'from': {
+    opacity: '1',
+    transform: 'translateX(0px)'
+  },
+  'to': {
+    opacity: '0',
+    transform: 'translateX(-50px)'
+  }
+});
+
+var rotate = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'rotate(0)',
+  },
+  'to': {
+    opacity: '1',
+    transform: 'rotate(270deg)',
+  }
+});
+
+var rotateHide = Radium.keyframes({
+  'from': {
+    opacity: '1',
+    transform: 'rotate(270deg)',
+  },
+  'to': {
+    opacity: '0',
+    transform: 'rotate(0deg)',
+  }
+});
+
+var slideDown = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translatey(-15px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translatey(0px)'
+  }
+});
+
+var slideDownHide = Radium.keyframes({
+  'from': {
+    opacity: '1',
+    transform: 'translatey(0px)'
+  },
+  'to': {
+    opacity: '0',
+    transform: 'translatey(-15px)'
+  }
+});
+
 var slideUp = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -169,20 +305,6 @@ var slideUp = Radium.keyframes({
 });
 
 var styles = {
-  slide: {
-  padding: 15,
-  minHeight: 100,
-  color: '#fff',
-},
-slide1: {
-  background: '#FEA900',
-},
-slide2: {
-  background: '#B3DC4A',
-},
-slide3: {
-  background: '#6AC0FF',
-},
   aspectRatio: {
     position: 'absolute',
     top: '0',
@@ -193,6 +315,51 @@ slide3: {
   hiddenHackContainer: {
     display: 'none',
     pointerEvents: 'none'
+  },
+  infoContainer: {
+    position: 'absolute',
+    left: '50%',
+    bottom: '-50px',
+    color: '#FFFFFF',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    cursor: 'pointer'
+  },
+  infoLine: {
+    height: '50px',
+    width: '1px',
+    backgroundColor: '#FFFFFF',
+  },
+  showInfoLine: {
+    transformOrigin: 'top',
+    opacity: '0',
+    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
+    animationName: grow,
+    animationDelay: '0.4s'
+  },
+  hideInfoLine: {
+    transformOrigin: 'bottom',
+    opacity: '0.2',
+    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
+    animationName: shrink,
+    animationDelay: '0.8s'
+  },
+  info: {
+    position: 'relative',
+    top: '10px',
+    fontSize: '12px',
+  },
+  showInfo: {
+    opacity: '0',
+    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
+    animationName: rotate,
+    animationDelay: '0.8s'
+  },
+  hideInfo: {
+    opacity: '1',
+    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
+    animationName: rotateHide,
   },
   landingContainer: {
     height: '100vh',
@@ -250,6 +417,7 @@ slide3: {
     backgroundColor: '#0C0C0C',
     paddingTop: '56.25%',
     width: '100%',
+    boxShadow: '0 19px 38px rgba(0,0,0,0.30)',
     opacity: '0',
     animation: 'ease 2.4s forwards',
     animationName: slideUp,
@@ -265,7 +433,7 @@ slide3: {
   workGalleryHolder: {
     position: 'relative',
     height: '100%',
-    width: '720px',
+    width: '780px',
     margin: '0 auto',
 
     '@media (max-width: 830px)': {
@@ -275,31 +443,91 @@ slide3: {
   worksImageContainer: {
     height: '100%'
   },
-  worksTitle: {
+  worksContainer: {
     position: 'absolute',
-    top: '-30px',
-    left: '0',
+    top: '35%',
+    left: '-12%',
+    zIndex: '1',
     color: '#FFFFFF',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  worksTitle: {
+    fontSize: '80px',
+    color: '#FFFFFF',
+  },
+  showWorksTitle: {
     opacity: '0',
     animation: 'ease 1.2s forwards',
     animationName: fadeInLeft,
+    animationDelay: '0.4s'
+  },
+  hideWorksTitle: {
+    opacity: '1',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeInLeftHide,
+    animationDelay: '0.8s'
+  },
+  worksDescription: {
+    marginRight: 'auto',
+    fontSize: '12px',
+    paddingTop: '15px',
+  },
+  showWorksDescription: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideDown,
+    animationDelay: '0.8s'
+  },
+  hideWorksDescription: {
+    opacity: '1',
+    animation: 'ease 1.2s forwards',
+    animationName: slideDownHide,
   },
   worksImage: {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeIn,
     height: '100%',
     width: '100%',
     transition: '0.8s ease all',
     filter: 'opacity(20%) grayscale(100%)',
 
     ':hover': {
+      filter: 'opacity(40%) grayscale(50%)',
       cursor: 'pointer',
-      filter: 'none',
       transform: 'scale(1.1)'
     }
   },
+  showWorksImage: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeIn,
+  },
+  hideWorksImage: {
+    opacity: '1',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeOut,
+    animationDelay: '1.2s'
+  },
+  selectedWorkContainer: {
+    position: 'absolute',
+    top: '10%',
+    left: '5%',
+    fontSize: '46px',
+    color: '#FFFFFF'
+  },
+  showSelectedWorkContainer: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeIn,
+    animationDelay: '2.4s'
+  },
+  hideSelectedWorkContainer: {
+    opacity: '1',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeOut,
+    animationDelay: '2.4s'
+  }
 }
