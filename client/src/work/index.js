@@ -19,8 +19,7 @@ class Work extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.fetchWorks();
+  componentDidMount() {    this.props.fetchWorks();
     this.props.getRoute(this.props.match.url);
   }
 
@@ -129,7 +128,17 @@ class Work extends Component {
 
     return (
       <div style={[styles.selectedWorkContainer, selectedWork ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
-        {selectedWork.title}
+        <div style={styles.leftSelected}>
+          <div styles={styles.selectedTitle}>{selectedWork.title}</div>
+          <div style={styles.selectedDescription}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor, est tenetur, dolorum dicta corrupti quia, voluptatem fuga consequuntur eos facere harum quos.
+          </div>
+          <div style={styles.selectedDescription}>Github</div>
+          <div style={styles.selectedDescription}>Demo</div>
+        </div>
+        <div style={styles.rightSelected}>
+          <div style={[styles.selectedImage, {backgroundImage: `url(${selectedWork.image})`}]}></div>
+        </div>
       </div>
     )
   }
@@ -349,15 +358,14 @@ var styles = {
     position: 'relative',
     top: '10px',
     fontSize: '12px',
+    opacity: '0',
   },
   showInfo: {
-    opacity: '0',
     animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
     animationName: rotate,
     animationDelay: '0.8s'
   },
   hideInfo: {
-    opacity: '1',
     animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
     animationName: rotateHide,
   },
@@ -452,10 +460,12 @@ var styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+    userSelect: 'none'
   },
   worksTitle: {
     fontSize: '80px',
     color: '#FFFFFF',
+    userSelect: 'none'
   },
   showWorksTitle: {
     opacity: '0',
@@ -467,12 +477,13 @@ var styles = {
     opacity: '1',
     animation: 'ease 1.2s forwards',
     animationName: fadeInLeftHide,
-    animationDelay: '0.8s'
+    animationDelay: '0.4s'
   },
   worksDescription: {
     marginRight: 'auto',
     fontSize: '12px',
     paddingTop: '15px',
+    userSelect: 'none'
   },
   showWorksDescription: {
     opacity: '0',
@@ -495,9 +506,7 @@ var styles = {
     filter: 'opacity(20%) grayscale(100%)',
 
     ':hover': {
-      filter: 'opacity(40%) grayscale(50%)',
       cursor: 'pointer',
-      transform: 'scale(1.1)'
     }
   },
   showWorksImage: {
@@ -509,25 +518,49 @@ var styles = {
     opacity: '1',
     animation: 'ease 1.2s forwards',
     animationName: fadeOut,
-    animationDelay: '1.2s'
+    animationDelay: '0.8s'
+  },
+  leftSelected: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 0 0px',
+    padding: '60px',
+  },
+  rightSelected: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 0 0px',
+    padding: '60px',
   },
   selectedWorkContainer: {
     position: 'absolute',
-    top: '10%',
-    left: '5%',
+    top: '0',
     fontSize: '46px',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    textAlign: 'left',
+    opacity: '0',
+    display: 'flex',
   },
   showSelectedWorkContainer: {
     opacity: '0',
     animation: 'ease 1.2s forwards',
     animationName: fadeIn,
-    animationDelay: '2.4s'
+    animationDelay: '1.6s'
   },
   hideSelectedWorkContainer: {
-    opacity: '1',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeOut,
-    animationDelay: '2.4s'
+    opacity: '0',
+    transition: '0.3s ease all'
+  },
+  selectedTitle: {
+
+  },
+  selectedDescription: {
+    marginTop: '15px',
+    fontSize: '12px',
+  },
+  selectedImage: {
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    paddingTop: '56.25%'
   }
 }
