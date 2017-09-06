@@ -117,30 +117,32 @@ class Work extends Component {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
           return (
-            <div key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage ,{backgroundImage: `url(${work.image})`}]}></div>
+            <div key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `url(${work.image})`}]}></div>
           );
       });
     }
   }
 
   renderSelectedWork() {
-    const selectedWork = this.state.selectedWork;
+    const work = this.state.selectedWork;
 
-    return (
-      <div style={[styles.selectedWorkContainer, selectedWork ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
-        <div style={styles.leftSelected}>
-          <div styles={styles.selectedTitle}>{selectedWork.title}</div>
-          <div style={styles.selectedDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor, est tenetur, dolorum dicta corrupti quia, voluptatem fuga consequuntur eos facere harum quos.
+    if (work) {
+      return (
+        <div style={[styles.selectedWorkContainer, work ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
+          <div style={styles.leftSelected}>
+            <div style={styles.selectedTitle}>{work.title}</div>
+            <div style={styles.selectedDescription}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor, est tenetur, dolorum dicta corrupti quia, voluptatem fuga consequuntur eos facere harum quos.
+            </div>
+            <div style={styles.selectedDescription}>Github</div>
+            <div style={styles.selectedDescription}>Demo</div>
           </div>
-          <div style={styles.selectedDescription}>Github</div>
-          <div style={styles.selectedDescription}>Demo</div>
+          <div style={styles.rightSelected}>
+            <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
+          </div>
         </div>
-        <div style={styles.rightSelected}>
-          <div style={[styles.selectedImage, {backgroundImage: `url(${selectedWork.image})`}]}></div>
-        </div>
-      </div>
-    )
+      )
+    }
   }
 
   selectWork(work) {
@@ -151,8 +153,7 @@ class Work extends Component {
 
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
-    const galleryImageLoaded = this.state.workEntries.length ? true : false;
-    const work = this.state.selectedWork;
+    // const galleryImageLoaded = this.state.workEntries.length ? true : false;
 
     if (!this.props.worksList) {
       return (<div></div>);
@@ -427,12 +428,14 @@ var styles = {
     width: '100%',
     boxShadow: '0 19px 38px rgba(0,0,0,0.30)',
     opacity: '0',
+    transition: '0.3s ease all',
     animation: 'ease 2.4s forwards',
     animationName: slideUp,
 
     // Need to add empty :hover styles here to tell Radium to track this element's
     // state.
-    ':hover': {},
+    ':hover': {
+    },
 
     '@media (max-width: 780px)': {
       width: '100%'
@@ -507,6 +510,7 @@ var styles = {
 
     ':hover': {
       cursor: 'pointer',
+
     }
   },
   showWorksImage: {
