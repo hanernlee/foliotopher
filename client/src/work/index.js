@@ -15,7 +15,7 @@ class Work extends Component {
     this.state = {
       count: 0,
       workEntries: [],
-      selectedWork: false
+      selectedWork: null
     }
   }
 
@@ -26,24 +26,36 @@ class Work extends Component {
   dotClick = (dotIndex) => {
     this.setState({
       count: dotIndex,
-      selectedWork: false
+      selectedWork: null
     });
   }
 
-  // navigateNext = () => {
-  //   const workListLength = this.props.worksList.length - 1;
-  //   const currentCount = this.state.count;
-  //
-  //   if (currentCount >= 0 && currentCount !== workListLength) {
-  //     this.setState({
-  //       count: currentCount + 1
-  //     });
-  //   } else {
-  //     this.setState({
-  //       count: 0
-  //     });
-  //   }
-  // }
+  deselectWork() {
+    this.setState({
+      selectedWork: null
+    });
+  }
+
+  selectWork(work) {
+    this.setState({
+      selectedWork: work
+    });
+  }
+
+  navigateNext = () => {
+    const workListLength = this.props.worksList.length - 1;
+    const currentCount = this.state.count;
+  
+    if (currentCount >= 0 && currentCount !== workListLength) {
+      this.setState({
+        count: currentCount + 1
+      });
+    } else {
+      this.setState({
+        count: 0
+      });
+    }
+  }
   //
   // navigateBack = () => {
   //   const workListLength = this.props.worksList.length - 1;
@@ -117,7 +129,7 @@ class Work extends Component {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
           return (
-            <div key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `url(${work.image})`}]}></div>
+            <div onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `url(${work.image})`}]}></div>
           );
       });
     }
@@ -128,27 +140,20 @@ class Work extends Component {
 
     if (work) {
       return (
-        <div style={[styles.selectedWorkContainer, work ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
-          <div style={styles.leftSelected}>
+        <div onClick={this.deselectWork.bind(this)} style={[styles.selectedWorkContainer, work ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
+          <div style={[styles.leftSelected, work ? styles.showLeftSelected : '']}>
             <div style={styles.selectedTitle}>{work.title}</div>
             <div style={styles.selectedDescription}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor, est tenetur, dolorum dicta corrupti quia, voluptatem fuga consequuntur eos facere harum quos.
             </div>
-            <div style={styles.selectedDescription}>Github</div>
-            <div style={styles.selectedDescription}>Demo</div>
+            <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink, styles.selectedDescription]}>Github</a>
           </div>
-          <div style={styles.rightSelected}>
+          <div style={[styles.rightSelected, work ? styles.showRightSelected : '']}>
             <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
           </div>
         </div>
       )
     }
-  }
-
-  selectWork(work) {
-    this.setState({
-      selectedWork: work
-    });
   }
 
   render() {
@@ -176,7 +181,7 @@ class Work extends Component {
                 currentCount={this.state.count}
                 dotClick={this.dotClick}
               />
-            <SwipeableViews index={this.state.count} enableMouseEvents onChangeIndex={this.onChangeIndex.bind(this)} style={styles.swipeableViews}>
+            <SwipeableViews index={this.state.count} onChangeIndex={this.onChangeIndex.bind(this)} style={styles.swipeableViews}>
               {this.renderWorkImage()}
             </SwipeableViews>
             </div>
@@ -311,6 +316,17 @@ var slideUp = Radium.keyframes({
   'to': {
     opacity: '1',
     transform: 'translate(-50%, -50%)'
+  }
+});
+
+var slideUpSelected = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(50px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(0)'
   }
 });
 
@@ -522,7 +538,8 @@ var styles = {
     opacity: '1',
     animation: 'ease 1.2s forwards',
     animationName: fadeOut,
-    animationDelay: '0.8s'
+    animationDelay: '0.8s',
+    pointerEvents: 'none'
   },
   leftSelected: {
     display: 'flex',
@@ -530,11 +547,26 @@ var styles = {
     flex: '1 0 0px',
     padding: '60px',
   },
+  showLeftSelected: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideUpSelected,
+    animationDelay: '1.8s'
+  },
+  hideLeftSelected: {
+
+  },
   rightSelected: {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 0 0px',
     padding: '60px',
+  },
+  showRightSelected: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideUpSelected,
+    animationDelay: '2.2s'
   },
   selectedWorkContainer: {
     position: 'absolute',
@@ -544,16 +576,14 @@ var styles = {
     textAlign: 'left',
     opacity: '0',
     display: 'flex',
+    height: '100%',
+    zIndex: '2',
   },
   showSelectedWorkContainer: {
     opacity: '0',
     animation: 'ease 1.2s forwards',
     animationName: fadeIn,
     animationDelay: '1.6s'
-  },
-  hideSelectedWorkContainer: {
-    opacity: '0',
-    transition: '0.3s ease all'
   },
   selectedTitle: {
 
@@ -566,5 +596,9 @@ var styles = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     paddingTop: '56.25%'
+  },
+  externalLink: {
+    position: 'relative',
+    zIndex: '1'
   }
 }
