@@ -111,8 +111,8 @@ class Work extends Component {
         if (this.state.count === index) {
           return (
             <div key={work.key} style={styles.worksContainer}>
-              <span style={[styles.worksTitle, selectedWork ? styles.hideWorksTitle : styles.showWorksTitle]}>{work.title}</span>
-              <span style={[styles.worksDescription, selectedWork ? styles.hideWorksDescription : styles.showWorksDescription]}>
+              <span onClick={this.selectWork.bind(this, work)} key="workTitle" style={[styles.worksTitle, selectedWork ? styles.hideWorksTitle : styles.showWorksTitle]}>{work.title}</span>
+              <span onClick={this.selectWork.bind(this, work)} key="workDesc" style={[styles.worksDescription, selectedWork ? styles.hideWorksDescription : styles.showWorksDescription]}>
                 - Retro Bit Bit Bit
               </span>
             </div>
@@ -141,15 +141,17 @@ class Work extends Component {
     if (work) {
       return (
         <div onClick={this.deselectWork.bind(this)} style={[styles.selectedWorkContainer, work ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
-          <div style={[styles.leftSelected, work ? styles.showLeftSelected : '']}>
-            <div style={styles.selectedTitle}>{work.title}</div>
-            <div style={styles.selectedDescription}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor, est tenetur, dolorum dicta corrupti quia, voluptatem fuga consequuntur eos facere harum quos.
+          <div style={[styles.selectedTitle, work ? styles.showSelectedTitle : '']}>{work.title}</div>
+          <div style={styles.flexContainer}>
+            <div style={[styles.leftSelected, work ? styles.showLeftSelected : '']}>
+              <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
             </div>
-            <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink, styles.selectedDescription]}>Github</a>
-          </div>
-          <div style={[styles.rightSelected, work ? styles.showRightSelected : '']}>
-            <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
+            <div style={[styles.rightSelected, work ? styles.showRightSelected : '']}>
+              <div style={styles.selectedDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor.
+              </div>
+              <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>GitHub</a>
+            </div>
           </div>
         </div>
       )
@@ -442,7 +444,7 @@ var styles = {
     backgroundColor: '#0C0C0C',
     paddingTop: '56.25%',
     width: '100%',
-    boxShadow: '0 19px 38px rgba(0,0,0,0.30)',
+    boxShadow: '10px 10px 20px rgba(0,0,0,0.30)',
     opacity: '0',
     transition: '0.3s ease all',
     animation: 'ease 2.4s forwards',
@@ -451,6 +453,7 @@ var styles = {
     // Need to add empty :hover styles here to tell Radium to track this element's
     // state.
     ':hover': {
+      boxShadow: '20px 20px 40px rgba(0,0,0,0.30)',
     },
 
     '@media (max-width: 780px)': {
@@ -479,12 +482,27 @@ var styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    userSelect: 'none'
+    userSelect: 'none',
+    transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+
+    '@media (max-width: 1024px)': {
+      top: '-55px',
+      left: '0'
+    },
   },
   worksTitle: {
     fontSize: '80px',
     color: '#FFFFFF',
-    userSelect: 'none'
+    userSelect: 'none',
+    transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+
+    ':hover': {
+      cursor: 'pointer',
+    },
+
+    '@media (max-width: 1024px)': {
+      fontSize: '40px'
+    },
   },
   showWorksTitle: {
     opacity: '0',
@@ -502,13 +520,22 @@ var styles = {
     marginRight: 'auto',
     fontSize: '12px',
     paddingTop: '15px',
-    userSelect: 'none'
+    userSelect: 'none',
+
+    ':hover': {
+      cursor: 'pointer',
+    },
+
+    '@media (max-width: 1024px)': {
+      color: 'transparent'
+    },
   },
   showWorksDescription: {
     opacity: '0',
     animation: 'ease 1.2s forwards',
     animationName: slideDown,
-    animationDelay: '0.8s'
+    animationDelay: '0.8s',
+
   },
   hideWorksDescription: {
     opacity: '1',
@@ -526,7 +553,6 @@ var styles = {
 
     ':hover': {
       cursor: 'pointer',
-
     }
   },
   showWorksImage: {
@@ -545,7 +571,11 @@ var styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 0 0px',
-    padding: '60px',
+    paddingRight: '30px',
+
+    '@media (max-width: 480px)': {
+      paddingRight: '15px',
+    },
   },
   showLeftSelected: {
     opacity: '0',
@@ -553,20 +583,24 @@ var styles = {
     animationName: slideUpSelected,
     animationDelay: '1.8s'
   },
-  hideLeftSelected: {
-
-  },
   rightSelected: {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 0 0px',
-    padding: '60px',
+    // padding: '0 60px 60px 30px',
+
+    // '@media (max-width: 480px)': {
+    //   padding: '0',
+    // },
+    // '@media (max-width: 720px)': {
+    //   padding: '0 30px 30px 15px',
+    // },
   },
   showRightSelected: {
     opacity: '0',
     animation: 'ease 1.2s forwards',
     animationName: slideUpSelected,
-    animationDelay: '2.2s'
+    animationDelay: '2s'
   },
   selectedWorkContainer: {
     position: 'absolute',
@@ -575,8 +609,9 @@ var styles = {
     color: '#FFFFFF',
     textAlign: 'left',
     opacity: '0',
-    display: 'flex',
     height: '100%',
+    width: '100%',
+    overflowY: 'scroll',
     zIndex: '2',
   },
   showSelectedWorkContainer: {
@@ -585,12 +620,61 @@ var styles = {
     animationName: fadeIn,
     animationDelay: '1.6s'
   },
-  selectedTitle: {
+  flexContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    padding: '0 60px 60px 60px',
 
+    '@media (max-width: 720px)': {
+      padding: '0 30px 30px 30px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 15px 15px 15px'
+    },
+    '@media (max-width: 450px)': {
+      padding: '0 10px 10px 10px'
+    },
   },
   selectedDescription: {
-    marginTop: '15px',
     fontSize: '12px',
+    color: 'rgb(184, 184, 184)',
+
+    '@media (max-width: 450px)': {
+      fontSize: '10px',
+    },
+  },
+  selectedTitle: {
+    fontSize: '46px',
+    transition: '1.2s ease all',
+    margin: '60px 0 30px 0',
+    paddingLeft: '60px',
+    opacity: '0',
+
+
+    '@media (max-width: 720px)': {
+      margin: '30px 0',
+      paddingLeft: '30px',
+    },
+    '@media (max-width: 580px)': {
+      fontSize: '24px',
+    },
+    '@media (max-width: 531px)': {
+      margin: '15px 0',
+    },
+    '@media (max-width: 480px)': {
+      paddingLeft: '15px',
+    },
+    '@media (max-width: 400px)': {
+      margin: '10px 0',
+      fontSize: '18px'
+    },
+  },
+  showSelectedTitle: {
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: fadeInLeft,
+    animationDelay: '1.4s'
   },
   selectedImage: {
     backgroundSize: 'cover',
@@ -599,6 +683,13 @@ var styles = {
   },
   externalLink: {
     position: 'relative',
-    zIndex: '1'
+    zIndex: '1',
+    color: '#FFFFFF',
+    marginTop: '15px',
+    fontSize: '12px',
+
+    '@media (max-width: 400px)': {
+      fontSize: '10px'
+    },
   }
 }
