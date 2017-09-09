@@ -12,6 +12,7 @@ import Hamburger from './hamburger/index';
 import Navigation from './navigation/index';
 import App from './home/index';
 import Work from './work/index';
+import Contact from './contact/index';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Hamburger />
           <Navigation />
           <Switch>
+            <Route path="/contact" component={Contact} />
             <Route path="/work" component={Work} />
             <Route path="/" component={App} />
           </Switch>
