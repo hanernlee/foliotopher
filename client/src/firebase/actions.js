@@ -18,7 +18,7 @@ export const snapshotToArray = snapshot => {
 
 export function fetchWorks() {
   return dispatch => {
-    database.ref('/work').on('value', snapshot => {
+    database.ref('/work').orderByChild('id').on('value', snapshot => {
       dispatch({
         type: FETCH_WORKS,
         payload: snapshotToArray(snapshot)

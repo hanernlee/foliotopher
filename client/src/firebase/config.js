@@ -1,8 +1,8 @@
 module.exports = {
   FIREBASE_CONFIG: {
-    apiKey: "AIzaSyDsNRj5VL7V4V0jvmTFnw4XuqPHgBsw6nQ",
-    authDomain: "hanernlee-f2fb5.firebaseapp.com",
-    databaseURL: "https://hanernlee-f2fb5.firebaseio.com",
-    storageBucket: "hanernlee-f2fb5.appspot.com"
+    apiKey: "AIzaSyCiaQWVh-fa6iknS-hRgbF_GqQy0zlF8_4",
+    authDomain: "foliotopher.firebaseapp.com",
+    databaseURL: "https://foliotopher.firebaseio.com",
+    storageBucket: "foliotopher.appspot.com"
   }
 };

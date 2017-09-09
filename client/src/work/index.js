@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
+import _ from 'lodash';
 
 import { fetchWorks } from '../firebase/actions';
 import { getRoute } from '../routes/actions';
@@ -19,7 +20,8 @@ class Work extends Component {
     }
   }
 
-  componentDidMount() {    this.props.fetchWorks();
+  componentDidMount() {    
+    this.props.fetchWorks();
     this.props.getRoute(this.props.match.url);
   }
 
@@ -74,7 +76,7 @@ class Work extends Component {
 
   onLoad(work) {
     this.setState(({ workEntries }) => {
-      return { workEntries: workEntries.concat(work) }
+      return { workEntries: _.sortBy(workEntries.concat(work), ['id']) }
     });
   }
 
@@ -113,7 +115,7 @@ class Work extends Component {
             <div key={work.key} style={styles.worksContainer}>
               <span onClick={this.selectWork.bind(this, work)} key="workTitle" style={[styles.worksTitle, selectedWork ? styles.hideWorksTitle : styles.showWorksTitle]}>{work.title}</span>
               <span onClick={this.selectWork.bind(this, work)} key="workDesc" style={[styles.worksDescription, selectedWork ? styles.hideWorksDescription : styles.showWorksDescription]}>
-                - Retro Bit Bit Bit
+                - {work.meta}
               </span>
             </div>
           );
@@ -147,9 +149,7 @@ class Work extends Component {
               <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
             </div>
             <div style={[styles.rightSelected, work ? styles.showRightSelected : '']}>
-              <div style={styles.selectedDescription}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque excepturi veritatis quis, culpa hic quisquam suscipit dolor.
-              </div>
+              <div style={styles.selectedDescription}>{work.description}</div>
               <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>GitHub</a>
             </div>
           </div>
@@ -495,6 +495,7 @@ var styles = {
     color: '#FFFFFF',
     userSelect: 'none',
     transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+    marginRight: 'auto',
 
     ':hover': {
       cursor: 'pointer',
@@ -659,10 +660,8 @@ var styles = {
     '@media (max-width: 580px)': {
       fontSize: '24px',
     },
-    '@media (max-width: 531px)': {
-      margin: '15px 0',
-    },
     '@media (max-width: 480px)': {
+      margin: '15px 0',
       paddingLeft: '15px',
     },
     '@media (max-width: 400px)': {
