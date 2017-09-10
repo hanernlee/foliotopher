@@ -83,6 +83,7 @@ export const styles = {
   },
   name: {
     fontSize: '40px',
+    fontWeight: '600',
     opacity: '0',
     animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,

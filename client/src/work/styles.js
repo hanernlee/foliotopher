@@ -258,8 +258,6 @@ export const styles = {
     animation: 'ease 2.4s forwards',
     animationName: slideUp,
 
-    // Need to add empty :hover styles here to tell Radium to track this element's
-    // state.
     ':hover': {
       boxShadow: '20px 20px 40px rgba(0,0,0,0.30)',
     },
@@ -300,6 +298,7 @@ export const styles = {
   },
   worksTitle: {
     fontSize: '80px',
+    fontWeight: '600',
     color: '#FFFFFF',
     userSelect: 'none',
     transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
@@ -358,7 +357,6 @@ export const styles = {
     height: '100%',
     width: '100%',
     transition: '0.8s ease all',
-    filter: 'opacity(20%) grayscale(100%)',
 
     ':hover': {
       cursor: 'pointer',

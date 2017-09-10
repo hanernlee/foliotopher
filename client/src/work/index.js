@@ -117,7 +117,7 @@ class Work extends Component {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
           return (
-            <div onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `url(${work.image})`}]}></div>
+            <div onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `linear-gradient( 135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9) ), url(${work.image})`}]}></div>
           );
       });
     }

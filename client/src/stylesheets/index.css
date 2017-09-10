@@ -4,3 +4,27 @@ body {
   font-family: 'Oxygen', sans-serif;
   background-color: #0C0C0C;
 }
+
+.fa {
+  transition: 0.4s ease all;
+}
+
+.fa:hover {
+  transform: scale(1.2);
+}
+
+.fa-linkedin-square:hover {
+  color: #0077B5;
+}
+
+.fa-github-alt:hover {
+  color: #333;
+}
+
+.fa-envelope-square:hover {
+  color: #C71610;
+}
+
+.fa-twitter:hover {
+  color: #1DA1F2;
+}
