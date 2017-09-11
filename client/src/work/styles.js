@@ -202,6 +202,7 @@ export const styles = {
     transition: 'transform 1s ease',
     overflow: 'hidden',
     backgroundColor: '#191919',
+    transform: 'translateZ(0)',
 
     '@media (max-width: 830px)': {
       padding: '0 56px'

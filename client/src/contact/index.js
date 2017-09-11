@@ -13,24 +13,31 @@ class Contact extends Component {
 
       this.state = {
         height: 0,
-        width: 0
+        width: 0,
+        imageReady: false,
       }
   }
   componentDidMount() {    
     this.props.getRoute(this.props.match.url);
 
-    const width = document.getElementById('rotateContainer').clientWidth;
-    const height = document.getElementById('rotateContainer').clientHeight;
+    const width = document.getElementById('rotateContainer').clientWidth ? document.getElementById('rotateContainer').clientWidth : 200;
+    const height = document.getElementById('rotateContainer').clientHeight ? document.getElementById('rotateContainer').clientHeight : 200;
 
     this.setState({
-      height: height,
+      height: height ,
       width: width
-    })
+    });
+  }
+
+  onLoad(work) {
+    this.setState({
+      imageReady: true
+    });
   }
 
   renderIcons() {
     if (this.props.contactLinks) {
-      const radius = 85;
+      const radius = 100;
       const links = this.props.contactLinks;
       const containerHeight = this.state.height;
       const containerWidth = this.state.width;
@@ -50,7 +57,9 @@ class Contact extends Component {
         return (
           <div key={index} style={[styles.icon, iconStyle, Radium.getState(this.state, 'rotateContainer', ':hover') && styles.pauseRotate
           ]}>
+          <a href={link.social} style={styles.socialLinks}>
             <i className={`fa fa-3x ${link.icon}`}></i>
+          </a>
           </div>
         );
       });
@@ -60,21 +69,43 @@ class Contact extends Component {
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
 
-    return (
-      <div style={[styles.landingContainer, slidingIn]}>
-        <div style={styles.contactSection}>
-          <div style={styles.imageContainer}>
-            <div style={styles.backgroundImage}></div>
+
+    if (!this.state.imageReady) {
+      return (
+        <div>
+          <div style={styles.placeholder}>
+            <div style={[styles.loader]}>C</div>
           </div>
-          <div style={styles.infoContainer}>
-            <div style={styles.infoTitle}>Say hello!</div>
-              <div key="rotateContainer" id="rotateContainer" style={styles.rotateContainer}>
-                {this.renderIcons()}
-              </div>
+          <div id="rotateContainer" style={styles.hackRotateContainer}></div>
+          <div style={styles.hiddenHackContainer}>
+            <img src={imageURL} alt="bg" onLoad={this.onLoad.bind(this)} />
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div style={[styles.landingContainer, slidingIn]}>
+          <div style={[styles.contactSection, styles.backgroundImage]}>
+            <div style={styles.infoContainer}>
+              <div style={styles.infoDescription}>
+                <div style={styles.infoTitle}>Hello there!</div>
+                <div style={styles.infoPara}>
+                  I am a Software Developer with a passion to solve interesting and complex problems through code.
+                </div>
+                <div style={styles.infoPara}>New experiences and challenges are things I constantly look forward to.</div>
+                <div style={styles.infoPara}>Feel free to get in touch!</div>
+              </div>
+              <div id="rotateContainer" style={styles.hackRotateContain}></div>
+              <div style={styles.rotateWrapper}>
+                {!this.props.navigationState && <div key="rotateContainer" style={styles.rotateContainer}>
+                  {this.renderIcons()}
+                </div>}
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 }
 

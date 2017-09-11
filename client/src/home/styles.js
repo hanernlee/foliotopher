@@ -46,6 +46,7 @@ export const styles = {
     position: 'relative',
     transition: 'transform 1s ease',
     overflow: 'hidden',
+    transform: 'translateZ(0)',
   },
   backgroundImage: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
@@ -80,6 +81,7 @@ export const styles = {
     color: '#FFFFFF',
     textAlign: 'center',
     zIndex: '1',
+    width: '100%'
   },
   name: {
     fontSize: '40px',
@@ -87,12 +89,22 @@ export const styles = {
     opacity: '0',
     animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,
+    transition: '0.4s ease all',
+
+    '@media (max-width: 380px)': {
+      fontSize: '30px',
+    },
   },
   strapLine: {
     opacity: '0',
     animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,
-    animationDelay: '0.8s'
+    animationDelay: '0.8s',
+    transition: '0.4s ease all',
+
+    '@media (max-width: 380px)': {
+      fontSize: '12px',
+    },
   },
   hidden: {
     opacity: '0',

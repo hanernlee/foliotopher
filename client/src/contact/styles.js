@@ -1,5 +1,4 @@
 import Radium from 'radium';
-import { fadeIn } from 'react-animations';
 
 const imageURL = process.env.PUBLIC_URL + '/contact.jpg';
 
@@ -9,6 +8,28 @@ var spin = Radium.keyframes({
 	}
 });
 
+var slideDown = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translatey(-50px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translatey(0px)'
+  }
+});
+
+var floatUpDown = Radium.keyframes({
+  'from': {
+    opacity: '0',
+    transform: 'translateY(-20px)'
+  },
+  'to': {
+    opacity: '1',
+    transform: 'translateY(20px)'
+  }
+});
+
 export const styles = {
 	landingContainer: {
 	  height: '100vh',
@@ -16,6 +37,7 @@ export const styles = {
 	  transition: 'transform 1s ease',
 	  overflow: 'hidden',
 	  backgroundColor: '#191919',
+    transform: 'translateZ(0)',
 
 	  '@media (max-width: 830px)': {
 	    padding: '0 56px'
@@ -50,89 +72,113 @@ export const styles = {
 		'@media (max-width: 1110px)': {
 			width: '100%'
 		},
-		'@media (max-width: 580px)': {
-			flexWrap: 'wrap',
-		},
-	},
-	imageContainer: {
-		width: '780px',
-		flex: '1 1 70%',
-		boxShadow: 'rgba(0, 0, 0, 0.3) 10px 10px 20px',
-		marginRight: '20px',
-		transition: '1.2 ease all',
-
-		'@media (max-width: 1110px)': {
-			width: '100%',
-			marginLeft: '56px'
-		},
-		'@media (max-width: 720px)': {
-			margin: '40px 32px'
-		},
-		'@media (max-width: 580px)': {
-			flex: '1 1 100%',
-			order: '2'
-		},
 	},
 	backgroundImage: {
-	  backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(' + imageURL + ')',
+	  backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url(' + imageURL + ')',
 	  backgroundRepeat: 'no-repeat',
 	  backgroundSize: 'cover',
 	  backgroundPosition: 'center center',
-	  paddingTop: '56.25%',
 	  width: '100%',
-	  opacity: '0',
-	  animation: 'x 2.4s linear forwards',
-	  animationName: Radium.keyframes(fadeIn, 'fadeIn')
+    height: '100vh',
 	},
 	infoContainer: {
-		width: '300px',
 		textAlign: 'center',
 		display: 'flex',
-		flexDirection: 'column',
 		alignItems: 'center',
-		flex: '1 1 30%',
-		marginLeft: '20px',
-		transition: '1.2 ease all',
+    flexDirection: 'column',
 
-		'@media (max-width: 1110px)': {
-			width: '100%',
-			marginRight: '56px'
-		},
-		'@media (max-width: 720px)': {
-			margin: '0 32px'
-		},
-		'@media (max-width: 580px)': {
-			flex: '1 1 100%',
-			order: '1'
-		},
+    '@media (max-width: 830px)': {
+      margin: '0 56px'
+    },
+    '@media (max-width: 720px)': {
+      margin: '0 32px'
+    }
 	},
+  infoDescription: {
+    fontSize: '14px',
+    textAlign: 'left',
+    color: 'rgb(184, 184, 184)'
+  },
 	infoTitle: {
-		marginBottom: '100px',
+    fontSize: '80px',
+    marginBottom: '20px',
+    textAlign: 'center',
+    transition: '1.2s ease all',
+    fontWeight: '600',
+    color: '#FFFFFF',
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideDown,
 
-		'@media (max-width: 580px)': {
-			marginBottom: '50px',
-		},
+    '@media (max-width: 540px)': {
+      fontSize: '40px',
+    },
 	},
+  infoPara: {
+    paddingTop: '10px',
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideDown,
+    animationDelay: '0.8s',
+  },
+  hackRotateContainer: {
+    width: '200px',
+    height: '200px',
+    position: 'absolute',
+    visibility: 'hidden'
+  },
+  rotateWrapper:{
+    opacity: '0',
+    animation: 'ease 1.2s forwards',
+    animationName: slideDown,
+    animationDelay: '1.2s'
+  },
 	rotateContainer: {
 		position: 'relative',
+    top: '50px',
+    left: '-9px',
 		width: '200px',
 		height: '200px',
-		animation: 'linear 15s infinite',
+		animation: 'linear 20s infinite',
 		animationName: spin,
-		margin: '0 auto',
+    margin: '20px auto',
 
 		':hover': {
 			animationPlayState: 'paused',
 		},
+
+    '@media (max-width: 380px)': {
+      top: '20px'
+    },
 	},
 	icon: {
 		width: '20px',
 		height: '20px',
 		position: 'absolute',
-		animation: 'linear 15s infinite reverse',
+		animation: 'linear 20s infinite reverse',
 		animationName: spin,
 	},
   pauseRotate: {
     animationPlayState: 'paused'
-  }
+  },
+  socialLinks: {
+    color: '#FFFFFF'
+  },
+  hiddenHackContainer: {
+    display: 'none',
+    pointerEvents: 'none'
+  },
+  placeholder: {
+    color: '#FFFFFF',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  loader: {
+    fontFamily: "'Great Vibes', cursive",
+    fontSize: '60px',
+    animation: 'x 1.2s ease infinite alternate',
+    animationName: floatUpDown,
+  },
 }
