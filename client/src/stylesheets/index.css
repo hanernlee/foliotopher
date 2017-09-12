@@ -28,3 +28,7 @@ body {
 .fa-twitter:hover {
   color: #1DA1F2;
 }
+
+.react-swipeable-view-container {
+  height: 100%;
+}
