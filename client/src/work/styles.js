@@ -186,6 +186,8 @@ export const styles = {
     top: '10px',
     fontSize: '12px',
     opacity: '0',
+
+    ':hover': {}
   },
   showInfo: {
     animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
