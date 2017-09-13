@@ -50,8 +50,8 @@ class App extends Component {
       return (
         <div style={[styles.landingContainer, slidingIn]}>
           <div style={[styles.headLine, headlineHidden]}>
-            <div className="slideDown" style={styles.name}>Christopher Lee</div>
-            <div style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
+            <div className="slideDownTitle" style={styles.name}>Christopher Lee</div>
+            <div className="slideDownDescription" style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
           </div>
           <div style={[styles.cloudTwo, darkenCloud]}></div>
           <div style={styles.backgroundImage}></div>
