@@ -1,16 +1,5 @@
 import Radium from 'radium';
 
-var fadeInLeft = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translateY(20px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translateY(0)'
-  }
-});
-
 export const styles = {
   navigationMenu: {
     position: 'fixed',
@@ -57,22 +46,6 @@ export const styles = {
   },
   linkContainer: {
     margin: '35px auto',
-  },
-  slideDownNavigation: {
-    opacity: '0',
-    // animation: 'ease 1.2s forwards',
-    // animationName: fadeInLeft,
-  },
-  slideDownNavigationTwo: {
-    opacity: '0',
-    // animation: 'ease 1.2s forwards',
-    // animationName: fadeInLeft,
-    // animationDelay: '0.4s'
-  },
-  slideDownNavigationThree: {
-    opacity: '0',
-    // animation: 'ease 1.2s forwards',
-    // animationName: fadeInLeft,
-    // animationDelay: '0.8s'
-  },
+    opacity: '0'
+  }
 }

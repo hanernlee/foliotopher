@@ -66,7 +66,7 @@ class NavigationMenu extends Component {
       }
 
       return (
-        <div className={slideIndex} style={styles.linkContainer} key={link.label}>
+        <div className={this.props.navigationState && slideIndex} style={styles.linkContainer} key={link.label}>
           <Link to={link.url} style={[styles.link, highlightedLabel === link.label ? styles.highlightLink : '']}>{link.label}</Link>
         </div>
       );
