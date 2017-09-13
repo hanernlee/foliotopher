@@ -83,9 +83,9 @@ export const styles = {
     fontSize: '40px',
     fontWeight: '600',
     opacity: '0',
-    animation: 'x 0.8s linear forwards',
-    animationName: fadeInDropdown,
-    animationDelay: '0.4s',
+    // animation: 'x 0.8s linear',
+    // animationName: fadeInDropdown,
+    // animationDelay: '0.4s',
     transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
