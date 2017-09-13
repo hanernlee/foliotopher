@@ -6,11 +6,13 @@ const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 var fadeInDropdown = Radium.keyframes({
   'from': {
     opacity: '0',
-    transform: 'translateY(-15px)'
+    // transform: 'translateY(-15px)'
+    transform: 'scaleX(0)'
   },
   'to': {
     opacity: '1',
-    transform: 'translateY(0)'
+    transform: 'scaleX(1)'
+    // transform: 'translateY(0)'
   }
 });
 
@@ -85,6 +87,7 @@ export const styles = {
     opacity: '0',
     animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,
+    animationDelay: '0.4s',
     transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {

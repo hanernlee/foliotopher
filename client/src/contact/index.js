@@ -24,7 +24,7 @@ class Contact extends Component {
     const height = document.getElementById('rotateContainer').clientHeight ? document.getElementById('rotateContainer').clientHeight : 200;
 
     this.setState({
-      height: height ,
+      height: height,
       width: width
     });
   }
