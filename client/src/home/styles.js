@@ -94,9 +94,9 @@ export const styles = {
   },
   strapLine: {
     opacity: '0',
-    animation: 'x 0.8s linear forwards',
-    animationName: fadeInDropdown,
-    animationDelay: '0.8s',
+    // animation: 'x 0.8s linear forwards',
+    // animationName: fadeInDropdown,
+    // animationDelay: '0.8s',
     transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
@@ -131,6 +131,8 @@ export const styles = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    width: '100%',
+    textAlign: 'center'
   },
   loader: {
     fontFamily: "'Great Vibes', cursive",
