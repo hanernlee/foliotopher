@@ -6,13 +6,11 @@ const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 var fadeInDropdown = Radium.keyframes({
   'from': {
     opacity: '0',
-    // transform: 'translateY(-15px)'
-    transform: 'scaleX(0)'
+    transform: 'translate3d(0, -15px, 0)'
   },
   'to': {
     opacity: '1',
-    transform: 'scaleX(1)'
-    // transform: 'translateY(0)'
+    transform: 'translate3d(0, 0, 0)'
   }
 });
 
