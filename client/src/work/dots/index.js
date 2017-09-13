@@ -19,7 +19,7 @@ class Dots extends Component {
 
   render() {
     return (
-      <div style={styles.dotContainer}>
+      <div className="slideInDots" style={styles.dotContainer}>
         {this.renderDots()}
       </div>
     );

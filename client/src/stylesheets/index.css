@@ -104,6 +104,18 @@ body {
   animation:         slideUpGallery 0.8s ease forwards;
 }
 
+.slideInDots {
+  opacity: 0;
+  -webkit-animation: slideInWorkTitle 1.2s ease forwards;
+  -moz-animation:    slideInWorkTitle 1.2s ease forwards;
+  -o-animation:      slideInWorkTitle 1.2s ease forwards;
+  animation:         slideInWorkTitle 1.2s ease forwards;
+ -webkit-animation-delay: 0.8s;
+ -moz-animation-delay:    0.8s;
+ -o-animation-delay:      0.8s;
+ animation-delay:         0.8s;
+}
+
 .showInfoLine {
   -webkit-animation: grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
   -moz-animation:    grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
@@ -121,7 +133,7 @@ body {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay:    0.4s;
   -o-animation-delay:      0.4s;
-  animation-delay: 0.4s;
+  animation-delay:         0.4s;
   opacity: 0.2;
   transform-origin: bottom;
 }
@@ -134,7 +146,7 @@ body {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay:    0.4s;
   -o-animation-delay:      0.4s;
-  animation-delay: 0.4s;
+  animation-delay:         0.4s;
 }
 
 .hideInfo {
@@ -152,7 +164,7 @@ body {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay:    0.4s;
   -o-animation-delay:      0.4s;
-  animation-delay: 0.4s;
+  animation-delay:         0.4s;
 }
 
 .hideWorkTitle {
@@ -170,7 +182,7 @@ body {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay:    0.8s;
   -o-animation-delay:      0.8s;
-  animation-delay: 0.8s;
+  animation-delay:         0.8s;
   opacity: 0;
 }
 
@@ -196,7 +208,7 @@ body {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay:    0.8s;
   -o-animation-delay:      0.8s;
-  animation-delay: 0.8s;
+  animation-delay:         0.8s;
   pointer-events: none;
 }
 
@@ -208,7 +220,7 @@ body {
   -webkit-animation-delay: 1.6s;
   -moz-animation-delay:    1.6s;
   -o-animation-delay:      1.6s;
-  animation-delay: 1.6s;
+  animation-delay:         1.6s;
   opacity: 0;
 }
 
@@ -220,7 +232,7 @@ body {
   -webkit-animation-delay: 1.8s;
   -moz-animation-delay:    1.8s;
   -o-animation-delay:      1.8s;
-  animation-delay: 1.8s;
+  animation-delay:         1.8s;
   opacity: 0;
 }
 
@@ -232,7 +244,7 @@ body {
   -webkit-animation-delay: 1.8s;
   -moz-animation-delay:    1.8s;
   -o-animation-delay:      1.8s;
-  animation-delay: 1.8s;
+  animation-delay:         1.8s;
   opacity: 0;
 }
 
@@ -244,7 +256,7 @@ body {
   -webkit-animation-delay: 2s;
   -moz-animation-delay:    2s;
   -o-animation-delay:      2s;
-  animation-delay: 2s;
+  animation-delay:         2s;
   opacity: 0;
 }
 
@@ -273,35 +285,35 @@ body {
   -webkit-animation-delay: 0.2s;
   -moz-animation-delay:    0.2s;
   -o-animation-delay:      0.2s;
-  animation-delay: 0.2s;
+  animation-delay:         0.2s;
 }
 
 .showParaThree {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay:    0.4s;
   -o-animation-delay:      0.4s;
-  animation-delay: 0.4s;
+  animation-delay:         0.4s;
 }
 
 .showParaThree {
   -webkit-animation-delay: 0.6s;
   -moz-animation-delay:    0.6s;
   -o-animation-delay:      0.6s;
-  animation-delay: 0.6s;
+  animation-delay:         0.6s;
 }
 
 .showParaFour{
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay:    0.8s;
   -o-animation-delay:      0.8s;
-  animation-delay: 0.8s;
+  animation-delay:         0.8s;
 }
 
 .showSpinner {
   -webkit-animation-delay: 1.4s;
   -moz-animation-delay:    1.4s;
   -o-animation-delay:      1.4s;
-  animation-delay: 1.4s;
+  animation-delay:         1.4s;
 }
 
 /*
