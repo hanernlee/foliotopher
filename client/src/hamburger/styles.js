@@ -1,6 +1,6 @@
 import Radium from 'radium';
 
-var slideUp = Radium.keyframes({
+var grow = Radium.keyframes({
   'from': {
     opacity: '0',
     transform: 'scaleX(0)'
@@ -23,7 +23,7 @@ export const styles = {
     opacity: '0',
     transformOrigin: 'left',
     animation: 'ease 1.2s forwards',
-    animationName: slideUp,
+    animationName: grow,
     animationDelay: '0.8s',
 
     // Need to add empty :hover styles here to tell Radium to track this element's

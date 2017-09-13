@@ -56,8 +56,17 @@ class NavigationMenu extends Component {
 
 
     return this.props.navigationLinks.map((link, index) => {
+      var slideIndex;
+      if (index === 0) {
+        slideIndex = 'navLink slideDownNavigation';
+      } else if (index === 1) {
+        slideIndex = 'navLink slideDownNavigationTwo'
+      } else {
+        slideIndex = 'navLink slideDownNavigationThree'
+      }
+
       return (
-        <div style={[styles.linkContainer, index === 0 ? linkContainerDisplay : '', index === 1 ? linkContainerDisplayTwo : '', index === 2 ? linkContainerDisplayThree : '', index === 3 ? linkContainerDisplayFour : '']} key={link.label}>
+        <div className={slideIndex} style={styles.linkContainer} key={link.label}>
           <Link to={link.url} style={[styles.link, highlightedLabel === link.label ? styles.highlightLink : '']}>{link.label}</Link>
         </div>
       );

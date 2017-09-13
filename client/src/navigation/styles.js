@@ -7,7 +7,7 @@ var fadeInLeft = Radium.keyframes({
   },
   'to': {
     opacity: '1',
-    transform: 'translateX(0)'
+    transform: 'translateY(0)'
   }
 });
 
@@ -58,27 +58,21 @@ export const styles = {
   linkContainer: {
     margin: '35px auto',
   },
-  linkContainerDisplay: {
+  slideDownNavigation: {
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
+    // animation: 'ease 1.2s forwards',
+    // animationName: fadeInLeft,
   },
-  linkContainerDisplayTwo: {
+  slideDownNavigationTwo: {
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '0.4s'
+    // animation: 'ease 1.2s forwards',
+    // animationName: fadeInLeft,
+    // animationDelay: '0.4s'
   },
-  linkContainerDisplayThree: {
+  slideDownNavigationThree: {
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '0.8s'
+    // animation: 'ease 1.2s forwards',
+    // animationName: fadeInLeft,
+    // animationDelay: '0.8s'
   },
-  linkContainerDisplayFour: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '1.2s'
-  }
 }
