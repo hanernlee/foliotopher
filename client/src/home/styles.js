@@ -3,20 +3,6 @@ import Radium from 'radium';
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 
-var movingCloud = Radium.keyframes({
-  '0%': {
-    transform: 'translateX(-100px)',
-    opacity: '0'
-  },
-  '1%': {
-    opacity: '0.4',
-  },
-  '100%': {
-    transform: 'translateX(100vw)',
-    opacity: '0.4'
-  },
-});
-
 var fadeInDropdown = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -37,6 +23,20 @@ var floatUpDown = Radium.keyframes({
     opacity: '1',
     transform: 'translateY(20px)'
   }
+});
+
+var movingCloud = Radium.keyframes({
+  '0%': {
+    transform: 'translateX(-100px)',
+    opacity: '0'
+  },
+  '1%': {
+    opacity: '0.4',
+  },
+  '100%': {
+    transform: 'translateX(100vw)',
+    opacity: '0.4'
+  },
 });
 
 export const styles = {
@@ -82,6 +82,7 @@ export const styles = {
   name: {
     fontSize: '40px',
     fontWeight: '600',
+    opacity: '0',
     animation: 'x 0.8s linear forwards',
     animationName: fadeInDropdown,
     transition: '0.4s ease all',
