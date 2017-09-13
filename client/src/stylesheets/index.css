@@ -33,11 +33,24 @@ body {
   height: 100%;
 }
 
-.slideDown {
-  -webkit-animation: slidedown 0.8s linear forwards; /* Safari 4+ */
-  -moz-animation:    slidedown 0.8s linear forwards; /* Fx 5+ */
-  -o-animation:      slidedown 0.8s linear forwards; /* Opera 12+ */
-  animation:         slidedown 0.8s linear forwards; /* IE 10+, Fx 29+ */}
+.slideDownTitle {
+  -webkit-animation: slidedown 1s linear forwards;
+  -moz-animation:    slidedown 1s linear forwards;
+  -o-animation:      slidedown 1s linear forwards;
+  animation:         slidedown 1s linear forwards;
+}
+
+.slideDownDescription {
+  -webkit-animation: slidedown 1s linear forwards;
+  -moz-animation:    slidedown 1s linear forwards;
+  -o-animation:      slidedown 1s linear forwards;
+  animation:         slidedown 1s linear forwards;
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay:    1.2s;
+  -o-animation-delay:      1.2s;
+  animation-delay:         1.2s;
+
+}
 
 @-webkit-keyframes slidedown {
   0%   { 
