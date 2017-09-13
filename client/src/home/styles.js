@@ -1,5 +1,4 @@
 import Radium from 'radium';
-import { fadeIn } from 'react-animations';
 
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
@@ -45,8 +44,7 @@ export const styles = {
     height: '100vh',
     position: 'relative',
     transition: 'transform 1s ease',
-    overflow: 'hidden',
-    transform: 'translateZ(0)',
+    overflow: 'hidden'
   },
   backgroundImage: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
@@ -54,9 +52,6 @@ export const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     height: '100%',
-    opacity: '0',
-    animation: 'x 2.4s linear forwards',
-    animationName: Radium.keyframes(fadeIn, 'fadeIn')
   },
   cloudTwo: {
     backgroundImage: 'url(' + cloudTwoURL + ')',
