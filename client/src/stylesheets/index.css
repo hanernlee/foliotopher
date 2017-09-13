@@ -33,6 +33,10 @@ body {
   height: 100%;
 }
 
+.react-swipeable-view-container > div {
+  height: 100%;
+}
+
 .fa-angle-down {
   opacity: 0;
   -webkit-animation: showContact 1.2s ease forwards;
