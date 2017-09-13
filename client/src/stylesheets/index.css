@@ -55,6 +55,7 @@ body {
 }
 
 .slideDownTitle {
+  opacity: 0;
   -webkit-animation: slideDown 1s linear forwards;
   -moz-animation:    slideDown 1s linear forwards;
   -o-animation:      slideDown 1s linear forwards;

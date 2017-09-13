@@ -3,17 +3,6 @@ import Radium from 'radium';
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
 const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 
-var fadeInDropdown = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translate3d(0, -15px, 0)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translate3d(0, 0, 0)'
-  }
-});
-
 var floatUpDown = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -83,9 +72,6 @@ export const styles = {
     fontSize: '40px',
     fontWeight: '600',
     opacity: '0',
-    // animation: 'x 0.8s linear',
-    // animationName: fadeInDropdown,
-    // animationDelay: '0.4s',
     transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
@@ -94,9 +80,6 @@ export const styles = {
   },
   strapLine: {
     opacity: '0',
-    // animation: 'x 0.8s linear forwards',
-    // animationName: fadeInDropdown,
-    // animationDelay: '0.8s',
     transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
