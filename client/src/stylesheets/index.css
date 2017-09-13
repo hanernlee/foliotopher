@@ -1050,6 +1050,7 @@ body {
  * Fixes 100vh not working on mobile mode
  * http://webdesignerwall.com/tutorials/css-fix-for-ios-vh-unit-bug
 */
+/* ipad */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
   .fullheight {
     height: 768px;
@@ -1058,6 +1059,17 @@ body {
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
   .fullheight {
     height: 1024px;
+  }
+}
+/* ipad pro */
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : landscape) {
+  .fullheight {
+    height: 1024px;
+  }
+}
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : portrait) {
+  .fullheight {
+    height: 1366px;
   }
 }
 /* iphone5 */
@@ -1071,15 +1083,26 @@ body {
     height: 568px;
   }
 }
-/* iPhone 4 */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* iphone6 */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
   .fullheight {
-    height: 320px;
+    height: 375px;
   }
 }
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
   .fullheight {
-    height: 480px;
+    height: 667px;
+  }
+}
+/* iphone6+ */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+  .fullheight {
+    height: 414px;
+  }
+}
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+  .fullheight {
+    height: 736px;
   }
 }
 
