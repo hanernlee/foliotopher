@@ -204,6 +204,7 @@ export const styles = {
     transition: 'transform 1s ease',
     overflow: 'hidden',
     backgroundColor: '#191919',
+    transform: 'translateZ(0)',
 
     '@media (max-width: 830px)': {
       padding: '0 56px'
@@ -496,7 +497,6 @@ export const styles = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: '3'
   },
   loader: {
     fontFamily: "'Great Vibes', cursive",

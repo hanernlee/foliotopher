@@ -44,7 +44,8 @@ export const styles = {
     height: '100vh',
     position: 'relative',
     transition: 'transform 1s ease',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    transform: 'translateZ(0)',
   },
   backgroundImage: {
     backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + imageURL + ')',
@@ -109,17 +110,15 @@ export const styles = {
     transform: 'translateX(-300px)',
     position: 'relative',
     transition: 'transform 0.8s ease',
+    opacity: '0.5',
 
     '@media (min-width: 720px)': {
       minHeight: 'calc(100vh - 80px)',
       transform: 'translateX(-400px)',
     }
   },
-  darken: {
-    backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(' + imageURL + ')',
-  },
   darkenCloud: {
-    backgroundImage: 'none',
+    animationPlayState: 'paused'
   },
   hiddenHackContainer: {
     display: 'none',
@@ -131,7 +130,6 @@ export const styles = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: '3'
   },
   loader: {
     fontFamily: "'Great Vibes', cursive",

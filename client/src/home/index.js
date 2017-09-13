@@ -29,7 +29,6 @@ class App extends Component {
   render() {
     const headlineHidden = this.props.navigationState ? styles.hidden : '';
     const slidingIn = this.props.navigationState ? styles.slidein : '';
-    const darkenImage = this.props.navigationState ? styles.darken : '';
     const darkenCloud = this.props.navigationState ? styles.darkenCloud : '';
 
     /*
@@ -55,7 +54,7 @@ class App extends Component {
             <div style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
           </div>
           <div style={[styles.cloudTwo, darkenCloud]}></div>
-          <div style={[styles.backgroundImage, darkenImage]}></div>
+          <div style={styles.backgroundImage}></div>
         </div>
       );
     }
