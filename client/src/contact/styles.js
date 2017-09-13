@@ -15,7 +15,6 @@ var floatUpDown = Radium.keyframes({
 
 export const styles = {
 	landingContainer: {
-	  height: '100vh',
 	  position: 'relative',
 	  transition: 'transform 0.6s ease',
 	  overflow: 'hidden',

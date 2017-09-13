@@ -48,7 +48,6 @@ export const styles = {
     ':hover': {}
   },
   landingContainer: {
-    height: '100vh',
     position: 'relative',
     transition: 'transform 1s ease',
     overflow: 'hidden',

@@ -47,7 +47,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div style={[styles.landingContainer, slidingIn]}>
+        <div className="fullheight" style={[styles.landingContainer, slidingIn]}>
           <div style={styles.headLine}>
             <div className="slideDownTitle" style={styles.name}>Christopher Lee</div>
             <div className="slideDownDescription" style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>

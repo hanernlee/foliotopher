@@ -161,7 +161,7 @@ class Work extends Component {
     }
 
     return (
-      <div style={[styles.landingContainer, slidingIn]}>
+      <div className="fullheight" style={[styles.landingContainer, slidingIn]}>
         <div style={styles.hiddenHackContainer}>
           {this.props.worksList.map((work, index) =>
             <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />

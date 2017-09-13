@@ -84,7 +84,7 @@ class Contact extends Component {
       )
     } else {
       return (
-        <div style={[styles.landingContainer, slidingIn]}>
+        <div className="fullheight" style={[styles.landingContainer, slidingIn]}>
           <div style={[styles.contactSection, styles.backgroundImage]}>
             <div style={styles.infoContainer}>
               <div style={styles.infoDescription}>
