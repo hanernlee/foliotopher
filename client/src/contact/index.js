@@ -55,7 +55,7 @@ class Contact extends Component {
         };
 
         return (
-          <div key={index} style={[styles.icon, iconStyle, Radium.getState(this.state, 'rotateContainer', ':hover') && styles.pauseRotate
+          <div className="rotateIcon" key={index} style={[styles.icon, iconStyle, Radium.getState(this.state, 'rotateContainer', ':hover') && styles.pauseRotate
           ]}>
           <a href={link.social} style={styles.socialLinks}>
             <i className={`fa fa-3x ${link.icon}`}></i>
@@ -88,16 +88,16 @@ class Contact extends Component {
           <div style={[styles.contactSection, styles.backgroundImage]}>
             <div style={styles.infoContainer}>
               <div style={styles.infoDescription}>
-                <div style={styles.infoTitle}>Hello there!</div>
-                <div style={styles.infoPara}>
+                <div className="showContact" style={styles.infoTitle}>Hello there!</div>
+                <div className="showContact showParaTwo" style={styles.infoPara}>
                   I am a Software Developer with a passion to solve interesting and complex problems through code.
                 </div>
-                <div style={styles.infoPara}>New experiences and challenges are things I constantly look forward to.</div>
-                <div style={styles.infoPara}>Feel free to get in touch!</div>
+                <div className="showContact showParaThree" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to.</div>
+                <div className="showContact showParaFour" style={styles.infoPara}>Feel free to get in touch!</div>
               </div>
               <div id="rotateContainer" style={styles.hackRotateContain}></div>
-              <div style={styles.rotateWrapper}>
-                {!this.props.navigationState && <div key="rotateContainer" style={styles.rotateContainer}>
+              <div className="showContact showSpinner" style={styles.rotateWrapper}>
+                {!this.props.navigationState && <div className="rotateContainer" key="rotateContainer" style={styles.rotateContainer}>
                   {this.renderIcons()}
                 </div>}
               </div>

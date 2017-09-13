@@ -27,9 +27,8 @@ class App extends Component {
   }
 
   render() {
-    const headlineHidden = this.props.navigationState ? styles.hidden : '';
     const slidingIn = this.props.navigationState ? styles.slidein : '';
-    const darkenCloud = this.props.navigationState ? styles.darkenCloud : '';
+    const stopCloud = this.props.navigationState ? styles.stopCloud : '';
 
     /*
      * Checks to see if backgroundImage has been loaded.
@@ -49,11 +48,11 @@ class App extends Component {
     } else {
       return (
         <div style={[styles.landingContainer, slidingIn]}>
-          <div style={[styles.headLine, headlineHidden]}>
+          <div style={styles.headLine}>
             <div className="slideDownTitle" style={styles.name}>Christopher Lee</div>
             <div className="slideDownDescription" style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
           </div>
-          <div className="moveCloud" style={[styles.cloudTwo, darkenCloud]}></div>
+          <div className="moveCloud" style={[styles.cloudTwo, stopCloud]}></div>
           <div style={styles.backgroundImage}></div>
         </div>
       );

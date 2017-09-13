@@ -33,6 +33,18 @@ body {
   height: 100%;
 }
 
+.fa-angle-down {
+  opacity: 0;
+  -webkit-animation: showContact 1.2s ease forwards;
+  -moz-animation:    showContact 1.2s ease forwards;
+  -o-animation:      showContact 1.2s ease forwards;
+  animation:         showContact 1.2s ease forwards;
+  -webkit-animation-delay: 1.8s;
+  -moz-animation-delay:    1.8s;
+  -o-animation-delay:      1.8s;
+  animation-delay:         1.8s;
+}
+
 .moveCloud {
   -webkit-animation: moveCloud 80s linear infinite;
   -moz-animation:    moveCloud 80s linear infinite;
@@ -41,43 +53,323 @@ body {
 }
 
 .navLink {
-  -webkit-animation: slideUpNav 1.2s ease forwards;
-  -moz-animation:    slideUpNav 1.2s ease forwards;
-  -o-animation:      slideUpNav 1.2s ease forwards;
-  animation:         slideUpNav 1.2s ease forwards;
+  -webkit-animation: slideUpNav 1.6s ease forwards;
+  -moz-animation:    slideUpNav 1.6s ease forwards;
+  -o-animation:      slideUpNav 1.6s ease forwards;
+  animation:         slideUpNav 1.6s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .slideDownNavigationTwo {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay:    0.4s;
-  -o-animation-delay:      0.4s;
-  animation-delay:         0.4s;
-}
-
-.slideDownNavigationThree {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay:    0.8s;
   -o-animation-delay:      0.8s;
   animation-delay:         0.8s;
 }
 
-.slideDownTitle {
-  opacity: 0;
-  -webkit-animation: slideDown 1s linear forwards;
-  -moz-animation:    slideDown 1s linear forwards;
-  -o-animation:      slideDown 1s linear forwards;
-  animation:         slideDown 1s linear forwards;
-}
-
-.slideDownDescription {
-  -webkit-animation: slideDown 1s linear forwards;
-  -moz-animation:    slideDown 1s linear forwards;
-  -o-animation:      slideDown 1s linear forwards;
-  animation:         slideDown 1s linear forwards;
+.slideDownNavigationThree {
   -webkit-animation-delay: 1s;
   -moz-animation-delay:    1s;
   -o-animation-delay:      1s;
   animation-delay:         1s;
+}
+
+.slideDownTitle {
+  opacity: 0;
+  -webkit-animation: showContact 1s ease forwards;
+  -moz-animation:    showContact 1s ease forwards;
+  -o-animation:      showContact 1s ease forwards;
+  animation:         showContact 1s ease forwards;
+}
+
+.slideDownDescription {
+  -webkit-animation: showContact 1s ease forwards;
+  -moz-animation:    showContact 1s ease forwards;
+  -o-animation:      showContact 1s ease forwards;
+  animation:         showContact 1s ease forwards;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay:    0.4s;
+  -o-animation-delay:      0.4s;
+  animation-delay:         0.4s;
+}
+
+.slideUpGallery {
+  -webkit-animation: slideUpGallery 0.8s ease forwards;
+  -moz-animation:    slideUpGallery 0.8s ease forwards;
+  -o-animation:      slideUpGallery 0.8s ease forwards;
+  animation:         slideUpGallery 0.8s ease forwards;
+}
+
+.showInfoLine {
+  -webkit-animation: grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -moz-animation:    grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -o-animation:      grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  animation:         grow 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  transform-origin: top;
+  opacity: 0;
+}
+
+.hideInfoLine {
+  -webkit-animation: shrink 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -moz-animation:    shrink 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -o-animation:      shrink 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  animation:         shrink 1.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay:    0.4s;
+  -o-animation-delay:      0.4s;
+  animation-delay: 0.4s;
+  opacity: 0.2;
+  transform-origin: bottom;
+}
+
+.showInfo {
+  -webkit-animation: showInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -moz-animation:    showInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -o-animation:      showInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  animation:         showInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay:    0.4s;
+  -o-animation-delay:      0.4s;
+  animation-delay: 0.4s;
+}
+
+.hideInfo {
+  -webkit-animation: hideInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -moz-animation:    hideInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  -o-animation:      hideInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  animation:         hideInfo 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+}
+
+.slideInWorkTitle {
+  -webkit-animation: slideInWorkTitle 1.2s ease forwards;
+  -moz-animation:    slideInWorkTitle 1.2s ease forwards;
+  -o-animation:      slideInWorkTitle 1.2s ease forwards;
+  animation:         slideInWorkTitle 1.2s ease forwards;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay:    0.4s;
+  -o-animation-delay:      0.4s;
+  animation-delay: 0.4s;
+}
+
+.hideWorkTitle {
+  -webkit-animation: hideWorkTitle 1.2s ease forwards;
+  -moz-animation:    hideWorkTitle 1.2s ease forwards;
+  -o-animation:      hideWorkTitle 1.2s ease forwards;
+  animation:         hideWorkTitle 1.2s ease forwards;
+}
+
+.showWorkDescription {
+  -webkit-animation: showWorkDescription 1.2s ease forwards;
+  -moz-animation:    showWorkDescription 1.2s ease forwards;
+  -o-animation:      showWorkDescription 1.2s ease forwards;
+  animation:         showWorkDescription 1.2s ease forwards;
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay:    0.8s;
+  -o-animation-delay:      0.8s;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.hideWorkDescription {
+  -webkit-animation: hideWorkDescription 1.2s ease forwards;
+  -moz-animation:    hideWorkDescription 1.2s ease forwards;
+  -o-animation:      hideWorkDescription 1.2s ease forwards;
+  animation:         hideWorkDescription 1.2s ease forwards;
+}
+
+.showWorkImage {
+  -webkit-animation: fadeIn 1.2s ease forwards;
+  -moz-animation:    fadeIn 1.2s ease forwards;
+  -o-animation:      fadeIn 1.2s ease forwards;
+  animation:         fadeIn 1.2s ease forwards;
+}
+
+.hideWorkImage {
+  -webkit-animation: fadeOut 1.2s ease forwards;
+  -moz-animation:    fadeOut 1.2s ease forwards;
+  -o-animation:      fadeOut 1.2s ease forwards;
+  animation:         fadeOut 1.2s ease forwards;
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay:    0.8s;
+  -o-animation-delay:      0.8s;
+  animation-delay: 0.8s;
+  pointer-events: none;
+}
+
+.showSelectedWork {
+  -webkit-animation: fadeIn 1.2s ease forwards;
+  -moz-animation:    fadeIn 1.2s ease forwards;
+  -o-animation:      fadeIn 1.2s ease forwards;
+  animation:         fadeIn 1.2s ease forwards;
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay:    1.6s;
+  -o-animation-delay:      1.6s;
+  animation-delay: 1.6s;
+  opacity: 0;
+}
+
+.showSelectedTitle {
+  -webkit-animation: slideInWorkTitle 1.2s ease forwards;
+  -moz-animation:    slideInWorkTitle 1.2s ease forwards;
+  -o-animation:      slideInWorkTitle 1.2s ease forwards;
+  animation:         slideInWorkTitle 1.2s ease forwards;
+  -webkit-animation-delay: 1.8s;
+  -moz-animation-delay:    1.8s;
+  -o-animation-delay:      1.8s;
+  animation-delay: 1.8s;
+  opacity: 0;
+}
+
+.showLeftSelected {
+  -webkit-animation: showSelected 1.2s ease forwards;
+  -moz-animation:    showSelected 1.2s ease forwards;
+  -o-animation:      showSelected 1.2s ease forwards;
+  animation:         showSelected 1.2s ease forwards;
+  -webkit-animation-delay: 1.8s;
+  -moz-animation-delay:    1.8s;
+  -o-animation-delay:      1.8s;
+  animation-delay: 1.8s;
+  opacity: 0;
+}
+
+.showRightSelected {
+  -webkit-animation: showSelected 1.2s ease forwards;
+  -moz-animation:    showSelected 1.2s ease forwards;
+  -o-animation:      showSelected 1.2s ease forwards;
+  animation:         showSelected 1.2s ease forwards;
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay:    2s;
+  -o-animation-delay:      2s;
+  animation-delay: 2s;
+  opacity: 0;
+}
+
+.rotateContainer {
+  -webkit-animation: spin 20s linear infinite;
+  -moz-animation:    spin 20s linear infinite;
+  -o-animation:      spin 20s linear infinite;
+  animation:         spin 20s linear infinite;
+}
+
+.rotateIcon {
+  -webkit-animation: spin 20s linear infinite reverse;
+  -moz-animation:    spin 20s linear infinite reverse;
+  -o-animation:      spin 20s linear infinite reverse;
+  animation:         spin 20s linear infinite reverse;
+}
+
+.showContact {
+  -webkit-animation: showContact 0.8s ease forwards;
+  -moz-animation:    showContact 0.8s ease forwards;
+  -o-animation:      showContact 0.8s ease forwards;
+  animation:         showContact 0.8s ease forwards;
+}
+
+.showParaTwo {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay:    0.2s;
+  -o-animation-delay:      0.2s;
+  animation-delay: 0.2s;
+}
+
+.showParaThree {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay:    0.4s;
+  -o-animation-delay:      0.4s;
+  animation-delay: 0.4s;
+}
+
+.showParaThree {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay:    0.6s;
+  -o-animation-delay:      0.6s;
+  animation-delay: 0.6s;
+}
+
+.showParaFour{
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay:    0.8s;
+  -o-animation-delay:      0.8s;
+  animation-delay: 0.8s;
+}
+
+.showSpinner {
+  -webkit-animation-delay: 1.4s;
+  -moz-animation-delay:    1.4s;
+  -o-animation-delay:      1.4s;
+  animation-delay: 1.4s;
+}
+
+/*
+  Fade In
+*/
+@-webkit-keyframes fadeIn {
+  0% { 
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% { 
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% { 
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% { 
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*
+  Fade out
+*/
+@-webkit-keyframes fadeOut {
+  0% { 
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeOut {
+  0% { 
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes fadeOut {
+  0% { 
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% { 
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /*
@@ -223,4 +515,513 @@ body {
    transform: translate3d(0,0,0);
  }
 }
+
+/*
+  Slide Up Gallery
+*/
+@-webkit-keyframes slideUpGallery {
+  0% { 
+    opacity: 0; 
+    transform: translate(-50%, -20%)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+  }
+}
+@-moz-keyframes slideUpGallery {
+  0% { 
+    opacity: 0; 
+    transform: translate(-50%, -20%)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+  }
+}
+@-o-keyframes slideUpGallery {
+  0% { 
+    opacity: 0; 
+    transform: translate(-50%, -20%)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+  }
+}
+@keyframes slideUpGallery {
+  0% { 
+    opacity: 0; 
+    transform: translate(-50%, -20%)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+  }
+}
+
+/*
+  Grow line
+*/
+@-webkit-keyframes grow {
+  0% { 
+    opacity: 0; 
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+@-moz-keyframes grow {
+  0% { 
+    opacity: 0; 
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scaleY(1);
+  }
+}
+@-o-keyframes grow {
+  0% { 
+    opacity: 0; 
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scaleY(2);
+  }
+}
+@keyframes grow {
+  0% { 
+    opacity: 0; 
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scaleY(1);
+  }
+}
+
+/*
+  Shrink line
+*/
+@-webkit-keyframes shrink {
+  0% { 
+    opacity: 0.2; 
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+@-moz-keyframes shrink {
+  0% { 
+    opacity: 0.2; 
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+@-o-keyframes shrink {
+  0% { 
+    opacity: 0.2; 
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+@keyframes shrink {
+  0% { 
+    opacity: 0.2; 
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+/*
+  Show Info
+*/
+@-webkit-keyframes showInfo {
+  0% { 
+    opacity: 0; 
+    transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(270deg);
+  }
+}
+@-moz-keyframes showInfo {
+  0% { 
+    opacity: 0; 
+    transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(270deg);
+  }
+}
+@-o-keyframes showInfo {
+  0% { 
+    opacity: 0; 
+    transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(270deg);
+  }
+}
+@keyframes showInfo {
+  0% { 
+    opacity: 0; 
+    transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(270deg);
+  }
+}
+
+/*
+  Hide info
+*/
+@-webkit-keyframes hideInfo {
+  0% { 
+    opacity: 1; 
+    transform: rotate(270deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+}
+@-moz-keyframes hideInfo {
+  0% { 
+    opacity: 1; 
+    transform: rotate(270deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+}
+@-o-keyframes hideInfo {
+  0% { 
+    opacity: 1; 
+    transform: rotate(270deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+}
+@keyframes hideInfo {
+  0% { 
+    opacity: 1; 
+    transform: rotate(270deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+}
+
+/*
+  Slide In work Title
+*/
+@-webkit-keyframes slideInWorkTitle {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideInWorkTitle {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-o-keyframes slideInWorkTitle {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInWorkTitle {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*
+  Slide In work Title
+*/
+@-webkit-keyframes hideWorkTitle {
+  0% { 
+    opacity: 1; 
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+@-moz-keyframes hideWorkTitle {
+  0% { 
+    opacity: 1; 
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+@-o-keyframes hideWorkTitle {
+  0% { 
+    opacity: 1; 
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+@keyframes hideWorkTitle {
+  0% { 
+    opacity: 1; 
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/*
+  Show work description
+*/
+@-webkit-keyframes showWorkDescription {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes showWorkDescription {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-o-keyframes showWorkDescription {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes showWorkDescription {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  Hide work Description
+*/
+@-webkit-keyframes hideWorkDescription {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+@-moz-keyframes hideWorkDescription {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+@-o-keyframes hideWorkDescription {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+@keyframes hideWorkDescription {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+
+/*
+  Show Selected
+*/
+@-webkit-keyframes showSelected {
+  0% { 
+    opacity: 0; 
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-moz-keyframes showSelected {
+  0% { 
+    opacity: 1; 
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-o-keyframes showSelected {
+  0% { 
+    opacity: 1; 
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes showSelected {
+  0% { 
+    opacity: 0; 
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/*
+  Spin
+*/
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@-moz-keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@-o-keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/*
+  Show Selected
+*/
+@-webkit-keyframes showContact {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-moz-keyframes showContact {
+  0% { 
+    opacity: 1; 
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-o-keyframes showContact {
+  0% { 
+    opacity: 1; 
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes showContact {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 -webkit-tap-highlight-color: rgba(0,0,0,0);

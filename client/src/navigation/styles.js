@@ -1,5 +1,3 @@
-import Radium from 'radium';
-
 export const styles = {
   navigationMenu: {
     position: 'fixed',
@@ -9,7 +7,7 @@ export const styles = {
     width: '300px',
     backgroundColor: '#0C0C0C',
     zIndex: '1',
-    transition: '0.6s ease-in-out',
+    transition: '0.6s ease',
 
     '@media (min-width: 720px)': {
       width: '400px'

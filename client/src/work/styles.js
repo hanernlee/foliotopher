@@ -1,133 +1,5 @@
 import Radium from 'radium';
 
-var fadeInLeft = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translateX(-50px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translateX(0)'
-  }
-});
-
-var fadeIn = Radium.keyframes({
-  'from': {
-    opacity: '0',
-  },
-  'to': {
-    opacity: '1',
-  }
-});
-
-var fadeOut = Radium.keyframes({
-  'from': {
-    opacity: '1',
-  },
-  'to': {
-    opacity: '0',
-  }
-});
-
-var grow = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'scaleY(0)',
-  },
-  'to': {
-    opacity: '0.2',
-    transform: 'scaleY(1)',
-  }
-});
-
-var shrink = Radium.keyframes({
-  'from': {
-    opacity: '0.2',
-    transform: 'scaleY(1)',
-  },
-  'to': {
-    opacity: '0',
-    transform: 'scaleY(0)',
-  }
-});
-
-var fadeInLeftHide = Radium.keyframes({
-  'from': {
-    opacity: '1',
-    transform: 'translateX(0px)'
-  },
-  'to': {
-    opacity: '0',
-    transform: 'translateX(-50px)'
-  }
-});
-
-var rotate = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'rotate(0)',
-  },
-  'to': {
-    opacity: '1',
-    transform: 'rotate(270deg)',
-  }
-});
-
-var rotateHide = Radium.keyframes({
-  'from': {
-    opacity: '1',
-    transform: 'rotate(270deg)',
-  },
-  'to': {
-    opacity: '0',
-    transform: 'rotate(0deg)',
-  }
-});
-
-var slideDown = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translatey(-15px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translatey(0px)'
-  }
-});
-
-var slideDownHide = Radium.keyframes({
-  'from': {
-    opacity: '1',
-    transform: 'translatey(0px)'
-  },
-  'to': {
-    opacity: '0',
-    transform: 'translatey(-15px)'
-  }
-});
-
-var slideUp = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translate(-50%, -40%)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translate(-50%, -50%)'
-  }
-});
-
-var slideUpSelected = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translateY(50px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translateY(0)'
-  }
-});
-
 var floatUpDown = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -167,20 +39,6 @@ export const styles = {
     width: '1px',
     backgroundColor: '#FFFFFF',
   },
-  showInfoLine: {
-    transformOrigin: 'top',
-    opacity: '0',
-    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: grow,
-    animationDelay: '0.4s'
-  },
-  hideInfoLine: {
-    transformOrigin: 'bottom',
-    opacity: '0.2',
-    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: shrink,
-    animationDelay: '0.8s'
-  },
   info: {
     position: 'relative',
     top: '10px',
@@ -188,15 +46,6 @@ export const styles = {
     opacity: '0',
 
     ':hover': {}
-  },
-  showInfo: {
-    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: rotate,
-    animationDelay: '0.8s'
-  },
-  hideInfo: {
-    animation: 'cubic-bezier(0.785, 0.135, 0.15, 0.86) 1.2s forwards',
-    animationName: rotateHide,
   },
   landingContainer: {
     height: '100vh',
@@ -236,7 +85,7 @@ export const styles = {
   slidein: {
     transform: 'translateX(-300px)',
     position: 'relative',
-    transition: 'transform 1.2s ease',
+    transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) all',
     opacity: '0.2',
 
     '@media (min-width: 720px)': {
@@ -258,8 +107,6 @@ export const styles = {
     boxShadow: '10px 10px 20px rgba(0,0,0,0.30)',
     opacity: '0',
     transition: '0.3s ease all',
-    animation: 'ease 2.4s forwards',
-    animationName: slideUp,
 
     ':hover': {
       boxShadow: '20px 20px 40px rgba(0,0,0,0.30)',
@@ -306,6 +153,7 @@ export const styles = {
     userSelect: 'none',
     transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
     marginRight: 'auto',
+    opacity: '0',
 
     ':hover': {
       cursor: 'pointer',
@@ -314,18 +162,6 @@ export const styles = {
     '@media (max-width: 1024px)': {
       fontSize: '40px'
     },
-  },
-  showWorksTitle: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '0.4s'
-  },
-  hideWorksTitle: {
-    opacity: '1',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeftHide,
-    animationDelay: '0.4s'
   },
   worksDescription: {
     marginRight: 'auto',
@@ -341,18 +177,6 @@ export const styles = {
       color: 'transparent'
     },
   },
-  showWorksDescription: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideDown,
-    animationDelay: '0.8s',
-
-  },
-  hideWorksDescription: {
-    opacity: '1',
-    animation: 'ease 1.2s forwards',
-    animationName: slideDownHide,
-  },
   worksImage: {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -365,18 +189,6 @@ export const styles = {
       cursor: 'pointer',
     }
   },
-  showWorksImage: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeIn,
-  },
-  hideWorksImage: {
-    opacity: '1',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeOut,
-    animationDelay: '0.8s',
-    pointerEvents: 'none'
-  },
   leftSelected: {
     display: 'flex',
     flexDirection: 'column',
@@ -387,22 +199,10 @@ export const styles = {
       paddingRight: '15px',
     },
   },
-  showLeftSelected: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideUpSelected,
-    animationDelay: '1.8s'
-  },
   rightSelected: {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 0 0px',
-  },
-  showRightSelected: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideUpSelected,
-    animationDelay: '2s'
   },
   selectedWorkContainer: {
     position: 'absolute',
@@ -410,31 +210,25 @@ export const styles = {
     fontSize: '46px',
     color: '#FFFFFF',
     textAlign: 'left',
-    opacity: '0',
     height: '100%',
     width: '100%',
     zIndex: '2',
-  },
-  showSelectedWorkContainer: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeIn,
-    animationDelay: '1.6s'
+    display: 'flex'
   },
   flexContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    padding: '0 60px 60px 60px',
+    padding: '0 60px',
 
     '@media (max-width: 720px)': {
-      padding: '0 30px 30px 30px',
+      padding: '0 30px',
     },
     '@media (max-width: 480px)': {
-      padding: '0 15px 15px 15px'
+      padding: '0 15px'
     },
     '@media (max-width: 450px)': {
-      padding: '0 10px 10px 10px'
+      padding: '0 10px'
     },
   },
   selectedDescription: {
@@ -448,37 +242,23 @@ export const styles = {
   selectedTitle: {
     fontSize: '46px',
     transition: '1.2s ease all',
-    margin: '60px 0 30px 0',
-    paddingLeft: '60px',
+    textAlign: 'center',
     opacity: '0',
+    flex: '1 0 100%',
 
-
-    '@media (max-width: 720px)': {
-      margin: '30px 0',
-      paddingLeft: '30px',
-    },
     '@media (max-width: 580px)': {
       fontSize: '24px',
-    },
-    '@media (max-width: 480px)': {
-      margin: '15px 0',
-      paddingLeft: '15px',
     },
     '@media (max-width: 400px)': {
       margin: '10px 0',
       fontSize: '18px'
     },
   },
-  showSelectedTitle: {
-    opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: fadeInLeft,
-    animationDelay: '1.4s'
-  },
   selectedImage: {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    paddingTop: '56.25%'
+    paddingTop: '56.25%',
+    transition: '0.4s ease all',
   },
   externalLink: {
     position: 'relative',
@@ -506,4 +286,16 @@ export const styles = {
     animation: 'x 1.2s ease infinite alternate',
     animationName: floatUpDown,
   },
+  backIcon: {
+    flex: '1 0 100%',
+    textAlign: 'center',
+
+    ':hover': {
+      cursor: 'pointer'
+    },
+
+    '@media (max-width: 580px)': {
+      fontSize: '24px',
+    },
+  }
 }

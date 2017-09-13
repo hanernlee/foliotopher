@@ -40,9 +40,6 @@ export const styles = {
     top: '10%',
     zIndex: '1',
     opacity: '0',
-    // transition: '0.3s ease all',
-    // animation: 'x 80s linear infinite',
-    // animationName: movingCloud,
   },
   headLine: {
     position: 'absolute',
@@ -58,7 +55,6 @@ export const styles = {
     fontSize: '40px',
     fontWeight: '600',
     opacity: '0',
-    transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
       fontSize: '30px',
@@ -66,20 +62,15 @@ export const styles = {
   },
   strapLine: {
     opacity: '0',
-    transition: '0.4s ease all',
 
     '@media (max-width: 380px)': {
       fontSize: '12px',
     },
   },
-  hidden: {
-    opacity: '0',
-    pointerEvents: 'none'
-  },
   slidein: {
     transform: 'translateX(-300px)',
     position: 'relative',
-    transition: 'transform 0.8s ease',
+    transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) all',
     opacity: '0.5',
 
     '@media (min-width: 720px)': {
@@ -87,8 +78,8 @@ export const styles = {
       transform: 'translateX(-400px)',
     }
   },
-  darkenCloud: {
-    animationPlayState: 'paused'
+  stopCloud: {
+    display: 'none'
   },
   hiddenHackContainer: {
     display: 'none',

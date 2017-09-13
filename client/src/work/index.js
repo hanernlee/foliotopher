@@ -79,10 +79,11 @@ class Work extends Component {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
         if (this.state.count === index) {
+
           return (
             <div key={index} onClick={this.selectWork.bind(this, work)} style={styles.infoContainer}>
-              <div style={[styles.infoLine, selectedWork ? styles.hideInfoLine : styles.showInfoLine]}></div>
-              <div style={[styles.info, selectedWork ? styles.hideInfo : styles.showInfo]}>Info</div>
+              <div className={selectedWork ? 'hideInfoLine' : 'showInfoLine'} style={styles.infoLine}></div>
+              <div className={selectedWork ? 'hideInfo' : 'showInfo'} style={styles.info}>Info</div>
             </div>
           );
         }
@@ -99,8 +100,8 @@ class Work extends Component {
         if (this.state.count === index) {
           return (
             <div key={work.key} style={styles.worksContainer}>
-              <span onClick={this.selectWork.bind(this, work)} key="workTitle" style={[styles.worksTitle, selectedWork ? styles.hideWorksTitle : styles.showWorksTitle]}>{work.title}</span>
-              <span onClick={this.selectWork.bind(this, work)} key="workDesc" style={[styles.worksDescription, selectedWork ? styles.hideWorksDescription : styles.showWorksDescription]}>
+              <span className={selectedWork ? 'hideWorkTitle' : 'slideInWorkTitle'} onClick={this.selectWork.bind(this, work)} key="workTitle" style={styles.worksTitle}>{work.title}</span>
+              <span className={selectedWork ? 'hideWorkDescription' : 'showWorkDescription'} onClick={this.selectWork.bind(this, work)} key="workDesc" style={styles.worksDescription}>
                 - {work.meta}
               </span>
             </div>
@@ -117,7 +118,7 @@ class Work extends Component {
     if (this.props.worksList) {
       return this.state.workEntries.map((work, index) => {
           return (
-            <div onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, selectedWork ? styles.hideWorksImage : styles.showWorksImage, {backgroundImage: `linear-gradient( 135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9) ), url(${work.image})`}]}></div>
+            <div className={selectedWork ? 'hideWorkImage' : 'showWorkImage'} onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, {backgroundImage: `linear-gradient( 135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9) ), url(${work.image})`}]}></div>
           );
       });
     }
@@ -128,16 +129,17 @@ class Work extends Component {
 
     if (work) {
       return (
-        <div onClick={this.deselectWork.bind(this)} style={[styles.selectedWorkContainer, work ? styles.showSelectedWorkContainer : styles.hideSelectedWorkContainer ]}>
-          <div style={[styles.selectedTitle, work ? styles.showSelectedTitle : '']}>{work.title}</div>
+        <div className="showSelectedWork" style={styles.selectedWorkContainer}>
           <div style={styles.flexContainer}>
-            <div style={[styles.leftSelected, work ? styles.showLeftSelected : '']}>
+            <div className="showSelectedTitle" style={styles.selectedTitle}>{work.title}</div>
+            <div className="showLeftSelected" style={styles.leftSelected}>
               <div style={[styles.selectedImage, {backgroundImage: `url(${work.image})`}]}></div>
             </div>
-            <div style={[styles.rightSelected, work ? styles.showRightSelected : '']}>
+            <div className="showRightSelected" style={styles.rightSelected}>
               <div style={styles.selectedDescription}>{work.description}</div>
               <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>GitHub</a>
             </div>
+            <i onClick={this.deselectWork.bind(this)} style={styles.backIcon} key="back-icon" className="fa fa-angle-down"></i>
           </div>
         </div>
       )
@@ -166,7 +168,7 @@ class Work extends Component {
           )}
         </div>
         <div style={styles.workGalleryHolder}>
-          <div key="gallery" style={styles.workGallery}>
+          <div className="slideUpGallery" key="gallery" style={styles.workGallery}>
             {this.renderSelectedWork()}
             {this.renderWorkTitle()}
             <div style={styles.aspectRatio}>

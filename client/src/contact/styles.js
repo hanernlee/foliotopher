@@ -2,23 +2,6 @@ import Radium from 'radium';
 
 const imageURL = process.env.PUBLIC_URL + '/contact.jpg';
 
-var spin = Radium.keyframes({
-	'100%': {
-	  transform: 'rotate(1turn)'
-	}
-});
-
-var slideDown = Radium.keyframes({
-  'from': {
-    opacity: '0',
-    transform: 'translatey(-50px)'
-  },
-  'to': {
-    opacity: '1',
-    transform: 'translatey(0px)'
-  }
-});
-
 var floatUpDown = Radium.keyframes({
   'from': {
     opacity: '0',
@@ -34,7 +17,7 @@ export const styles = {
 	landingContainer: {
 	  height: '100vh',
 	  position: 'relative',
-	  transition: 'transform 1s ease',
+	  transition: 'transform 0.6s ease',
 	  overflow: 'hidden',
 	  backgroundColor: '#191919',
     transform: 'translateZ(0)',
@@ -49,7 +32,7 @@ export const styles = {
 	slidein: {
 	  transform: 'translateX(-300px)',
 	  position: 'relative',
-	  transition: 'transform 1.2s ease',
+    transition: '1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) all',
 	  opacity: '0.2',
 
 	  '@media (min-width: 720px)': {
@@ -107,8 +90,6 @@ export const styles = {
     fontWeight: '600',
     color: '#FFFFFF',
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideDown,
 
     '@media (max-width: 540px)': {
       fontSize: '40px',
@@ -117,9 +98,6 @@ export const styles = {
   infoPara: {
     paddingTop: '10px',
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideDown,
-    animationDelay: '0.8s',
   },
   hackRotateContainer: {
     width: '200px',
@@ -129,9 +107,6 @@ export const styles = {
   },
   rotateWrapper:{
     opacity: '0',
-    animation: 'ease 1.2s forwards',
-    animationName: slideDown,
-    animationDelay: '1.2s'
   },
 	rotateContainer: {
 		position: 'relative',
@@ -139,8 +114,6 @@ export const styles = {
     left: '-9px',
 		width: '200px',
 		height: '200px',
-		animation: 'linear 20s infinite',
-		animationName: spin,
     margin: '20px auto',
 
 		':hover': {
@@ -155,8 +128,6 @@ export const styles = {
 		width: '20px',
 		height: '20px',
 		position: 'absolute',
-		animation: 'linear 20s infinite reverse',
-		animationName: spin,
 	},
   pauseRotate: {
     animationPlayState: 'paused'

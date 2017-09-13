@@ -37,10 +37,6 @@ class NavigationMenu extends Component {
   }
 
   renderMenu() {
-    const linkContainerDisplay = this.props.navigationState ? styles.linkContainerDisplay : '';
-    const linkContainerDisplayTwo = this.props.navigationState ? styles.linkContainerDisplayTwo : '';
-    const linkContainerDisplayThree = this.props.navigationState ? styles.linkContainerDisplayThree : '';
-    const linkContainerDisplayFour = this.props.navigationState ? styles.linkContainerDisplayFour : '';
     const currentRoute = this.props.currentRoute;
 
     var highlightedLabel;
@@ -53,7 +49,6 @@ class NavigationMenu extends Component {
     } else {
       highlightedLabel = 'Home';
     }
-
 
     return this.props.navigationLinks.map((link, index) => {
       var slideIndex;
