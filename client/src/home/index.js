@@ -53,7 +53,7 @@ class App extends Component {
             <div className="slideDownTitle" style={styles.name}>Christopher Lee</div>
             <div className="slideDownDescription" style={styles.strapLine}>Software Developer | Blockchain Enthusiast</div>
           </div>
-          <div style={[styles.cloudTwo, darkenCloud]}></div>
+          <div className="moveCloud" style={[styles.cloudTwo, darkenCloud]}></div>
           <div style={styles.backgroundImage}></div>
         </div>
       );

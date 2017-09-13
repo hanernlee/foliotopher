@@ -14,20 +14,6 @@ var floatUpDown = Radium.keyframes({
   }
 });
 
-var movingCloud = Radium.keyframes({
-  '0%': {
-    transform: 'translateX(-100px)',
-    opacity: '0'
-  },
-  '1%': {
-    opacity: '0.4',
-  },
-  '100%': {
-    transform: 'translateX(100vw)',
-    opacity: '0.4'
-  },
-});
-
 export const styles = {
   landingContainer: {
     height: '100vh',
@@ -54,9 +40,9 @@ export const styles = {
     top: '10%',
     zIndex: '1',
     opacity: '0',
-    transition: '0.3s ease all',
-    animation: 'x 80s linear infinite',
-    animationName: movingCloud,
+    // transition: '0.3s ease all',
+    // animation: 'x 80s linear infinite',
+    // animationName: movingCloud,
   },
   headLine: {
     position: 'absolute',
