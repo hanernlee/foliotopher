@@ -1,10 +1,14 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Oxygen', sans-serif;
   background-color: #0C0C0C;
   height: 100%;
   width: 100%;
+}
+
+#root, #root > div {
+  height: 100%;
 }
 
 .fa {
@@ -40,7 +44,13 @@ body {
 }
 
 .fullheight {
-  height: 100vh;
+  height: 100%;
+}
+
+.workContainer {
+  background: #070000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #070000, #191931, #070000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #070000, #191931, #070000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .fa-angle-down {

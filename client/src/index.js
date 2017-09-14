@@ -20,7 +20,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducer)}>
     <StyleRoot>
       <BrowserRouter>
-        <div>
+        <div className="fullheight">
           <Hamburger />
           <Navigation />
           <Switch>

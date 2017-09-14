@@ -109,7 +109,7 @@ export const styles = {
   },
 	rotateContainer: {
 		position: 'relative',
-    top: '50px',
+    top: '30px',
     left: '-9px',
 		width: '200px',
 		height: '200px',
