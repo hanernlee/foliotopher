@@ -66,10 +66,10 @@ html, body {
 }
 
 .moveCloud {
-  -webkit-animation: moveCloud 80s linear infinite;
-  -moz-animation:    moveCloud 80s linear infinite;
-  -o-animation:      moveCloud 80s linear infinite;
-  animation:         moveCloud 80s linear infinite;
+  -webkit-animation: moveCloud 50s linear infinite;
+  -moz-animation:    moveCloud 50s linear infinite;
+  -o-animation:      moveCloud 50s linear infinite;
+  animation:         moveCloud 50s linear infinite;
 }
 
 .navLink {
