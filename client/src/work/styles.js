@@ -263,6 +263,7 @@ export const styles = {
     zIndex: '1',
     color: '#FFFFFF',
     marginTop: '15px',
+    marginRight: '20px',
     fontSize: '12px',
 
     '@media (max-width: 400px)': {
