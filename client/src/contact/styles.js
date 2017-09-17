@@ -153,4 +153,8 @@ export const styles = {
     animation: 'x 1.2s ease infinite alternate',
     animationName: floatUpDown,
   },
+  bold: {
+    color: '#FFFFFF',
+    fontWeight: 'bold'
+  }
 }

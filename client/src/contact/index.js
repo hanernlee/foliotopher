@@ -90,10 +90,10 @@ class Contact extends Component {
               <div style={styles.infoDescription}>
                 <div className="showContact" style={styles.infoTitle}>Say Hello!</div>
                 <div className="showContact showParaTwo" style={styles.infoPara}>
-                  I am a Melbourne-based Software Developer looking to positively change the world, one line of code at a time.
+                  I am a <span style={styles.bold}>Melbourne-based Software Developer</span> looking to positively change the world, one line of code at a time.
                 </div>
-                <div className="showContact showParaThree" style={styles.infoPara}>Currently fiddling with iOS (Swift) Apps and jumping on the Blockchain train.</div>
-                <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. Feel free to get in touch!</div>
+                <div className="showContact showParaThree" style={styles.infoPara}>Currently fiddling with <span style={styles.bold}>iOS (Swift) Apps</span> and jumping on the <span style={styles.bold}>Blockchain</span> train.</div>
+                <div className="showContact showParaFour" style={styles.infoPara}><span style={styles.bold}>New experiences</span> and <span style={styles.bold}>challenges</span> are things I constantly look forward to. <span style={styles.bold}>Feel free to get in touch!</span></div>
               </div>
               <div id="rotateContainer" style={styles.hackRotateContain}></div>
               <div className="showContact showSpinner" style={styles.rotateWrapper}>
