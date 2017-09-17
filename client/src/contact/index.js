@@ -90,7 +90,7 @@ class Contact extends Component {
               <div style={styles.infoDescription}>
                 <div className="showContact" style={styles.infoTitle}>Say Hello!</div>
                 <div className="showContact showParaTwo" style={styles.infoPara}>
-                  I am a Melbourne-based Software Developer looking to positively change the world with one line of code at a time.
+                  I am a Melbourne-based Software Developer looking to positively change the world, one line of code at a time.
                 </div>
                 <div className="showContact showParaThree" style={styles.infoPara}>Currently fiddling with iOS (Swift) Apps and jumping on the Blockchain train.</div>
                 <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. Feel free to get in touch!</div>
