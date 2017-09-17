@@ -184,7 +184,7 @@ export const styles = {
     transition: '0.8s ease all',
 
     ':hover': {
-      cursor: 'pointer',
+      cursor: 'e-resize',
     }
   },
   leftSelected: {
