@@ -75,9 +75,10 @@ class Work extends Component {
 
   renderInfo() {
     const selectedWork = this.state.selectedWork;
+    const workEntries = this.state.workEntries;
 
-    if (this.props.worksList) {
-      return this.state.workEntries.map((work, index) => {
+    if (this.props.worksList && this.props.worksList.length === workEntries.length) {
+      return workEntries.map((work, index) => {
         if (this.state.count === index) {
 
           return (
@@ -114,9 +115,10 @@ class Work extends Component {
 
   renderWorkImage() {
     const selectedWork = this.state.selectedWork;
+    const workEntries = this.state.workEntries;
 
-    if (this.props.worksList) {
-      return this.state.workEntries.map((work, index) => {
+    if (this.props.worksList && this.props.worksList.length === workEntries.length) {
+      return workEntries.map((work, index) => {
           return (
             <div className={selectedWork ? 'hideWorkImage' : 'showWorkImage'} onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, {backgroundImage: `linear-gradient( 135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9) ), url(${work.image})`}]}></div>
           );
