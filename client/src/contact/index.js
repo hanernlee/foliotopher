@@ -88,12 +88,12 @@ class Contact extends Component {
           <div style={[styles.contactSection, styles.backgroundImage]}>
             <div style={styles.infoContainer}>
               <div style={styles.infoDescription}>
-                <div className="showContact" style={styles.infoTitle}>Say Hello!</div>
+                <div className="showContact" style={styles.infoTitle}>Hello!</div>
                 <div className="showContact showParaTwo" style={styles.infoPara}>
-                  I am a <span style={styles.bold}>Melbourne-based Software Developer</span> specializing in buidling responsive web applications.
+                  I am a <span style={styles.bold}>Melbourne based Software Developer</span> and I enjoy crafting <span style={styles.bold}>responsive web applications.</span>
                 </div>
                 <div className="showContact showParaThree" style={styles.infoPara}>Currently fiddling with <span style={styles.bold}>iOS (Swift) Apps</span> and jumping on the <span style={styles.bold}>Blockchain</span> train.</div>
-                <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. <a href="mailto:hanernlee@gmail.com" style={styles.bold}>Feel free to get in touch!</a></div>
+                <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. <a href="mailto:hanernlee@gmail.com" style={[styles.bold, styles.email]}>Feel free to get in touch!</a></div>
               </div>
               <div id="rotateContainer" style={styles.hackRotateContain}></div>
               <div className="showContact showSpinner" style={styles.rotateWrapper}>

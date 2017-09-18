@@ -56,7 +56,7 @@ export const styles = {
 		},
 	},
 	backgroundImage: {
-	  backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url(' + imageURL + ')',
+	  backgroundImage: 'linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) ), url(' + imageURL + ')',
 	  backgroundRepeat: 'no-repeat',
 	  backgroundSize: 'cover',
 	  backgroundPosition: 'center center',
@@ -97,6 +97,7 @@ export const styles = {
   infoPara: {
     paddingTop: '10px',
     opacity: '0',
+    color: '#6a6a6a',
   },
   hackRotateContainer: {
     width: '200px',
@@ -154,8 +155,11 @@ export const styles = {
     animationName: floatUpDown,
   },
   bold: {
-    color: '#FFFFFF',
+    color: 'rgb(184, 184, 184)',
     fontWeight: 'bold',
     textDecoration: 'none'
+  },
+  email: {
+    pointer: 'cursor'
   }
 }

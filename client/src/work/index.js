@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
-import _ from 'lodash';
 
 import { fetchWorks } from '../firebase/actions';
 import { getRoute } from '../routes/actions';
