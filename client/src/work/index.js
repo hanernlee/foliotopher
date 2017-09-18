@@ -62,7 +62,7 @@ class Work extends Component {
 
   onLoad(work) {
     this.setState(({ workEntries }) => {
-      return { workEntries: _.sortBy(workEntries.concat(work), ['id']) }
+      return { workEntries: workEntries.concat(work) }
     });
   }
 
@@ -75,10 +75,11 @@ class Work extends Component {
 
   renderInfo() {
     const selectedWork = this.state.selectedWork;
-    const workEntries = this.state.workEntries;
+    const loadedWorkEntries = this.state.workEntries;
+    const worksList = this.props.worksList;
 
-    if (this.props.worksList && this.props.worksList.length === workEntries.length) {
-      return workEntries.map((work, index) => {
+    if (worksList && worksList.length === loadedWorkEntries.length) {
+      return worksList.map((work, index) => {
         if (this.state.count === index) {
 
           return (
@@ -95,9 +96,11 @@ class Work extends Component {
 
   renderWorkTitle() {
     const selectedWork = this.state.selectedWork;
+    const loadedWorkEntries = this.state.workEntries;
+    const worksList = this.props.worksList;
 
-    if (this.props.worksList) {
-      return this.state.workEntries.map((work, index) => {
+    if (worksList && worksList.length === loadedWorkEntries.length) {
+      return worksList.map((work, index) => {
         if (this.state.count === index) {
           return (
             <div key={work.key} style={styles.worksContainer}>
@@ -115,10 +118,11 @@ class Work extends Component {
 
   renderWorkImage() {
     const selectedWork = this.state.selectedWork;
-    const workEntries = this.state.workEntries;
+    const loadedWorkEntries = this.state.workEntries;
+    const worksList = this.props.worksList;
 
-    if (this.props.worksList && this.props.worksList.length === workEntries.length) {
-      return workEntries.map((work, index) => {
+    if (worksList && worksList.length === loadedWorkEntries.length) {
+      return worksList.map((work, index) => {
           return (
             <div className={selectedWork ? 'hideWorkImage' : 'showWorkImage'} onClick={this.navigateNext.bind(this)} key={work.key} style={[styles.worksImage, {backgroundImage: `linear-gradient( 135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9) ), url(${work.image})`}]}></div>
           );
