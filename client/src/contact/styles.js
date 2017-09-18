@@ -155,6 +155,7 @@ export const styles = {
   },
   bold: {
     color: '#FFFFFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textDecoration: 'none'
   }
 }
