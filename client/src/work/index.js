@@ -148,7 +148,7 @@ class Work extends Component {
               <div style={styles.selectedDescription}>{work.description}</div>
               <div>
                 <a target="_blank" href={work.github} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>GitHub</a>
-                {work.demo && <a target="_blank" href={work.demo} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>Demo</a>}
+                {work.demo && <a target="_blank" href={work.demo} rel="noopener noreferrer external" onClick={(e) => {e.stopPropagation()}} style={[styles.externalLink]}>View</a>}
               </div>
             </div>
             <i onClick={this.deselectWork.bind(this)} style={styles.backIcon} key="back-icon" className="fa fa-angle-down"></i>
