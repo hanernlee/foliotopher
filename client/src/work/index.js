@@ -159,44 +159,49 @@ class Work extends Component {
 
   render() {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
-    // const galleryImageLoaded = this.state.workEntries.length ? true : false;
+    const worksList = this.props.worksList;
+    const loadedWorkEntries = this.state.workEntries;
 
-    if (!this.props.worksList) {
-      return (
-        <div>
-          <div style={styles.placeholder}>
-            <div style={[styles.loader]}>C</div>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="fullheight workContainer" style={[styles.landingContainer, slidingIn]}>
-        <div style={styles.hiddenHackContainer}>
-          {this.props.worksList.map((work, index) =>
-            <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />
-          )}
-        </div>
-        <div style={styles.workGalleryHolder}>
-          <div className="slideUpGallery" key="gallery" style={styles.workGallery}>
-            {this.renderSelectedWork()}
-            {this.renderWorkTitle()}
-            <div style={styles.aspectRatio}>
-              <Dots
-                dotsCount={this.props.worksList.length}
-                currentCount={this.state.count}
-                dotClick={this.dotClick}
-              />
-            <SwipeableViews index={this.state.count} onChangeIndex={this.onChangeIndex.bind(this)} style={styles.swipeableViews}>
-              {this.renderWorkImage()}
-            </SwipeableViews>
+    if (!worksList) {
+      return (<div></div>);
+    } else {
+      if (worksList && worksList.length === loadedWorkEntries.length) {
+        return (
+          <div className="fullheight workContainer" style={[styles.landingContainer, slidingIn]}>
+            <div style={styles.workGalleryHolder}>
+              <div className="slideUpGallery" key="gallery" style={styles.workGallery}>
+                {this.renderSelectedWork()}
+                {this.renderWorkTitle()}
+                <div style={styles.aspectRatio}>
+                  <Dots
+                    dotsCount={this.props.worksList.length}
+                    currentCount={this.state.count}
+                    dotClick={this.dotClick}
+                  />
+                <SwipeableViews index={this.state.count} onChangeIndex={this.onChangeIndex.bind(this)} style={styles.swipeableViews}>
+                  {this.renderWorkImage()}
+                </SwipeableViews>
+                </div>
+                {this.renderInfo()}
+              </div>
             </div>
-            {this.renderInfo()}
           </div>
-        </div>
-      </div>
-    );
+        );
+      } else {
+        return (
+          <div>
+            <div style={styles.placeholder}>
+              <div style={[styles.loader]}>C</div>
+            </div>
+            <div style={styles.hiddenHackContainer}>
+              {this.props.worksList.map((work, index) =>
+                <img src={work.image} alt={work.name} key={index} onLoad={this.onLoad.bind(this, work)} />
+              )}
+            </div>
+          </div>
+        );
+      }
+    }
   }
 }
 
