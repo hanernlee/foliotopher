@@ -6,6 +6,7 @@ import { getRoute } from '../routes/actions';
 import { styles } from './styles';
 
 const imageURL = process.env.PUBLIC_URL + '/Background2.jpg';
+const cloudTwoURL = process.env.PUBLIC_URL + '/cloud2.png';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends Component {
 
     this.state = {
       imageReady: false,
+      cloudReady: false
     }
   }
 
@@ -20,9 +22,15 @@ class App extends Component {
     this.props.getRoute(this.props.match.url);
   }
 
-  onLoad(work) {
+  onLoad() {
     this.setState({
       imageReady: true
+    });
+  }
+
+  onLoadCloud() {
+    this.setState({
+      cloudReady: true
     });
   }
 
@@ -34,7 +42,7 @@ class App extends Component {
      * Checks to see if backgroundImage has been loaded.
      * Otherwise show loading state here
     */
-    if (!this.state.imageReady) {
+    if (!this.state.imageReady && !this.state.cloudReady) {
       return (
         <div>
           <div style={styles.placeholder}>
@@ -42,6 +50,7 @@ class App extends Component {
           </div>
           <div style={styles.hiddenHackContainer}>
             <img src={imageURL} alt="bg" onLoad={this.onLoad.bind(this)} />
+            <img src={cloudTwoURL} alt="bg" onLoad={this.onLoadCloud.bind(this)} />
           </div>
         </div>
       );
