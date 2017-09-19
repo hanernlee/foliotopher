@@ -149,7 +149,7 @@ export const styles = {
     textAlign: 'center'
   },
   loader: {
-    fontFamily: "'Great Vibes', cursive",
+    fontFamily: "'Rouge Script', cursive",
     fontSize: '60px',
     animation: 'x 1.2s ease infinite alternate',
     animationName: floatUpDown,
