@@ -96,7 +96,6 @@ export const styles = {
   workGallery: {
     position: 'absolute',
     top: '50%',
-    left: '50%',
     textAlign: 'center',
     backgroundColor: '#0C0C0C',
     paddingTop: '56.25%',

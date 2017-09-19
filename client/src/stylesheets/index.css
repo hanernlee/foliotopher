@@ -554,41 +554,41 @@ html, body {
 @-webkit-keyframes slideUpGallery {
   0% { 
     opacity: 0; 
-    transform: translate(-50%, -20%)
+    transform: translateY(-20%)
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%)
+    transform: translateY(-50%)
   }
 }
 @-moz-keyframes slideUpGallery {
   0% { 
     opacity: 0; 
-    transform: translate(-50%, -20%)
+    transform: translateY(-20%)
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%)
+    transform: translateY(-50%)
   }
 }
 @-o-keyframes slideUpGallery {
   0% { 
     opacity: 0; 
-    transform: translate(-50%, -20%)
+    transform: translateY(-20%)
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%)
+    transform: translateY(-50%)
   }
 }
 @keyframes slideUpGallery {
   0% { 
     opacity: 0; 
-    transform: translate(-50%, -20%)
+    transform: translateY(-20%)
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%)
+    transform: translateY(-50%)
   }
 }
 
