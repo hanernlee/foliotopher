@@ -2,7 +2,7 @@
 
 A minimalistic portfolio website.
 
-<img src="https://firebasestorage.googleapis.com/v0/b/foliotopher.appspot.com/o/folio.jpg?alt=media&token=c87aad39-8a69-4b27-8a6e-f619de8dfc9c" width="200">
+<img src="https://firebasestorage.googleapis.com/v0/b/foliotopher.appspot.com/o/folio.jpg?alt=media&token=c87aad39-8a69-4b27-8a6e-f619de8dfc9c" width="400">
 
 ## Technologies
 
