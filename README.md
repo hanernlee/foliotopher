@@ -32,6 +32,6 @@ Thanks for reading and if you have any questions email away!
 
 ## Links
 
-[Foliotopher] (https://hanernlee.io)
+[Foliotopher](https://hanernlee.io)
 
-[CRAE] (https://originmaster.com/running-create-react-app-and-express-crae-on-heroku-c39a39fe7851)
+[CRAE](https://originmaster.com/running-create-react-app-and-express-crae-on-heroku-c39a39fe7851)
