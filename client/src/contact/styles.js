@@ -73,9 +73,9 @@ export const styles = {
     borderRadius: '50%',
     margin: '0 auto',
 
-    '@media (max-width: 380px)': {
-      height: '100px',
-      width: '100px'
+    '@media (max-width: 415px)': {
+      height: '125px',
+      width: '125px'
     }
   },
 	infoContainer: {
@@ -115,7 +115,7 @@ export const styles = {
   infoPara: {
     paddingTop: '10px',
     opacity: '0',
-    color: 'rgb(184, 184, 184)',
+    color: '#8A8A8A',
     margin: '0 auto',
     textAlign: 'center'
   },
@@ -172,8 +172,7 @@ export const styles = {
     animationName: floatUpDown,
   },
   bold: {
-    color: 'rgb(184, 184, 184)',
-    fontWeight: 'bold',
+    color: '#DCDCDC',
     textDecoration: 'none'
   },
   email: {

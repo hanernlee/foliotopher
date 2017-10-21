@@ -101,9 +101,9 @@ class Contact extends Component {
                   <div style={styles.profileImage}></div>
                 </div>
                 <div className="showContact showParaTwo" style={styles.infoPara}>
-                  Hello! I am a Melbourne based Software Developer and I enjoy experimenting with new technologies.
+                  Hello! I am a <span style={styles.bold}>Melbourne based Software Developer</span> and I enjoy building <span style={styles.bold}>responsive mobile and web applications.</span>
                 </div>
-                <div className="showContact showParaThree" style={styles.infoPara}>My current interests include developing in React, React Native, iOS (Swift) Programming and exploring Blockchain technology.</div>
+                <div className="showContact showParaThree" style={styles.infoPara}>My current interests include developing in <span style={styles.bold}>React</span>, <span style={styles.bold}>React Native</span>, <span style={styles.bold}>iOS (Swift) Programming</span> and exploring <span style={styles.bold}>Blockchain</span> technology.</div>
                 <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. <a href="mailto:hanernlee@gmail.com" style={[styles.bold, styles.email]}>Feel free to get in touch!</a></div>
               </div>
               <div id="rotateContainer" style={styles.hackRotateContain}></div>
