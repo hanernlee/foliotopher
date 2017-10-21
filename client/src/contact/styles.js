@@ -1,6 +1,7 @@
 import Radium from 'radium';
 
 const imageURL = process.env.PUBLIC_URL + '/contact.jpg';
+const profileURL = process.env.PUBLIC_URL + '/round.jpg';
 
 var floatUpDown = Radium.keyframes({
   'from': {
@@ -63,6 +64,20 @@ export const styles = {
 	  width: '100%',
     height: '100vh',
 	},
+  profileImage: {
+    backgroundImage: 'url(' + profileURL + ')',
+    backgroundSize: 'contain',
+    backgroundPosition: 'center center',
+    height: '150px',
+    width: '150px',
+    borderRadius: '50%',
+    margin: '0 auto',
+
+    '@media (max-width: 380px)': {
+      height: '100px',
+      width: '100px'
+    }
+  },
 	infoContainer: {
 		textAlign: 'center',
 		display: 'flex',
@@ -89,15 +104,20 @@ export const styles = {
     fontWeight: '600',
     color: '#FFFFFF',
     opacity: '0',
+    display: 'flex',
+    alignItems: 'center',
 
     '@media (max-width: 540px)': {
       fontSize: '40px',
     },
+    '@media (max-width: 380px)': {
+      marginBottom: '0px',
+    }
 	},
   infoPara: {
     paddingTop: '10px',
     opacity: '0',
-    color: '#6a6a6a',
+    color: 'rgb(184, 184, 184)'
   },
   hackRotateContainer: {
     width: '200px',
