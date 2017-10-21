@@ -6,6 +6,7 @@ import { getRoute } from '../routes/actions';
 import { styles } from './styles'
 
 const imageURL = process.env.PUBLIC_URL + '/contact.jpg';
+const profileURL = process.env.PUBLIC_URL + '/round.jpg';
 
 class Contact extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Contact extends Component {
         height: 0,
         width: 0,
         imageReady: false,
+        profileImageReady: false
       }
   }
   componentDidMount() {    
@@ -32,6 +34,12 @@ class Contact extends Component {
   onLoad(work) {
     this.setState({
       imageReady: true
+    });
+  }
+
+  onProfileImageLoad(work) {
+    this.setState({
+      profileImageReady: true
     });
   }
 
@@ -70,7 +78,7 @@ class Contact extends Component {
     const slidingIn = this.props.navigationState ? styles.slidein : '';
 
 
-    if (!this.state.imageReady) {
+    if (!this.state.imageReady && !this.state.profileImageReady) {
       return (
         <div>
           <div style={styles.placeholder}>
@@ -79,6 +87,7 @@ class Contact extends Component {
           <div id="rotateContainer" style={styles.hackRotateContainer}></div>
           <div style={styles.hiddenHackContainer}>
             <img src={imageURL} alt="bg" onLoad={this.onLoad.bind(this)} />
+            <img src={profileURL} alt="bg" onProfileImageLoad={this.onLoad.bind(this)} />
           </div>
         </div>
       )
