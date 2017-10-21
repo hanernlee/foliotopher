@@ -45,7 +45,7 @@ class Contact extends Component {
 
   renderIcons() {
     if (this.props.contactLinks) {
-      const radius = 100;
+      const radius = 70;
       const links = this.props.contactLinks;
       const containerHeight = this.state.height;
       const containerWidth = this.state.width;
@@ -87,7 +87,7 @@ class Contact extends Component {
           <div id="rotateContainer" style={styles.hackRotateContainer}></div>
           <div style={styles.hiddenHackContainer}>
             <img src={imageURL} alt="bg" onLoad={this.onLoad.bind(this)} />
-            <img src={profileURL} alt="bg" onProfileImageLoad={this.onLoad.bind(this)} />
+            <img src={profileURL} alt="bg" onLoad={this.onProfileImageLoad.bind(this)} />
           </div>
         </div>
       )
@@ -101,9 +101,9 @@ class Contact extends Component {
                   <div style={styles.profileImage}></div>
                 </div>
                 <div className="showContact showParaTwo" style={styles.infoPara}>
-                  Hello! I am a <span style={styles.bold}>Melbourne based Software Developer</span> and I enjoy crafting <span style={styles.bold}>responsive web applications.</span>
+                  Hello! I am a Melbourne based Software Developer and I enjoy experimenting with new technologies.
                 </div>
-                <div className="showContact showParaThree" style={styles.infoPara}>Currently fiddling with <span style={styles.bold}>iOS (Swift) Apps</span> and jumping on the <span style={styles.bold}>Blockchain</span> train.</div>
+                <div className="showContact showParaThree" style={styles.infoPara}>My current interests include developing in React, React Native, iOS (Swift) Programming and exploring Blockchain technology.</div>
                 <div className="showContact showParaFour" style={styles.infoPara}>New experiences and challenges are things I constantly look forward to. <a href="mailto:hanernlee@gmail.com" style={[styles.bold, styles.email]}>Feel free to get in touch!</a></div>
               </div>
               <div id="rotateContainer" style={styles.hackRotateContain}></div>

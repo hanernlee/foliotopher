@@ -97,12 +97,10 @@ export const styles = {
     color: 'rgb(184, 184, 184)'
   },
 	infoTitle: {
-    fontSize: '80px',
-    marginBottom: '20px',
+    marginBottom: '10px',
     textAlign: 'center',
     transition: '1.2s ease all',
     fontWeight: '600',
-    color: '#FFFFFF',
     opacity: '0',
     display: 'flex',
     alignItems: 'center',
@@ -117,7 +115,9 @@ export const styles = {
   infoPara: {
     paddingTop: '10px',
     opacity: '0',
-    color: 'rgb(184, 184, 184)'
+    color: 'rgb(184, 184, 184)',
+    margin: '0 auto',
+    textAlign: 'center'
   },
   hackRotateContainer: {
     width: '200px',
@@ -130,11 +130,8 @@ export const styles = {
   },
 	rotateContainer: {
 		position: 'relative',
-    top: '30px',
-    left: '-9px',
 		width: '200px',
 		height: '200px',
-    margin: '20px auto',
 
 		':hover': {
 			animationPlayState: 'paused',
