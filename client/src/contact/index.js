@@ -65,7 +65,7 @@ class Contact extends Component {
         return (
           <div className="rotateIcon" key={index} style={[styles.icon, iconStyle, Radium.getState(this.state, 'rotateContainer', ':hover') && styles.pauseRotate
           ]}>
-          <a href={link.social} style={styles.socialLinks}>
+          <a target="_blank" href={link.social} style={styles.socialLinks}>
             <i className={`fa fa-3x ${link.icon}`}></i>
           </a>
           </div>

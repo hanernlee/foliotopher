@@ -76,6 +76,10 @@ export const styles = {
     '@media (max-width: 415px)': {
       height: '125px',
       width: '125px'
+    },
+    '@media (max-width: 360px)': {
+      height: '100px',
+      width: '100px'
     }
   },
 	infoContainer: {
@@ -117,7 +121,11 @@ export const styles = {
     opacity: '0',
     color: '#8A8A8A',
     margin: '0 auto',
-    textAlign: 'center'
+    textAlign: 'center',
+
+    '@media (max-width: 360px)': {
+      fontSize: '12px'
+    }
   },
   hackRotateContainer: {
     width: '200px',
@@ -130,16 +138,13 @@ export const styles = {
   },
 	rotateContainer: {
 		position: 'relative',
+    left: '-4px',
 		width: '200px',
 		height: '200px',
 
 		':hover': {
 			animationPlayState: 'paused',
-		},
-
-    '@media (max-width: 380px)': {
-      top: '20px'
-    },
+		}
 	},
 	icon: {
 		width: '20px',
