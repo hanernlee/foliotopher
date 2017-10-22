@@ -77,7 +77,7 @@ export const styles = {
       height: '125px',
       width: '125px'
     },
-    '@media (max-width: 360px)': {
+    '@media (max-width: 380px)': {
       height: '100px',
       width: '100px'
     }
@@ -123,7 +123,10 @@ export const styles = {
     margin: '0 auto',
     textAlign: 'center',
 
-    '@media (max-width: 360px)': {
+    '@media (max-width: 831px)': {
+      textAlign: 'left'
+    },
+    '@media (max-width: 380px)': {
       fontSize: '12px'
     }
   },
